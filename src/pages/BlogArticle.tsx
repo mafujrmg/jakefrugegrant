@@ -32,7 +32,7 @@ export default function BlogArticle() {
       <div className="min-h-[60vh] flex items-center justify-center bg-cream">
         <div className="text-center">
           <h1 className="font-display text-3xl font-bold text-navy mb-4">Article Not Found</h1>
-          <Link to="/blog" className="text-gold hover:underline">Back to Blog</Link>
+          <Link to="/blog" className="inline-link">Back to Blog</Link>
         </div>
       </div>
     );

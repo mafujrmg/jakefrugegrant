@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from 'react';
+import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import FadeInSection from '@/components/FadeInSection';
 import DiamondDivider from '@/components/DiamondDivider';
@@ -66,7 +67,7 @@ export default function Contact() {
               <div className="space-y-6">
                 <div>
                   <h3 className="font-accent uppercase tracking-wider text-sm text-navy font-semibold mb-1">Email</h3>
-                  <a href="mailto:info@jakefrugejrgrant.com" className="text-gold hover:underline">
+                  <a href="mailto:info@jakefrugejrgrant.com" className="inline-link">
                     info@jakefrugejrgrant.com
                   </a>
                 </div>
@@ -86,7 +87,7 @@ export default function Contact() {
                 <h3 className="font-display text-xl font-bold text-white mb-3">About {SUBJECT_NAME}</h3>
                 <p className="text-white/70 text-sm leading-relaxed">
                   {SUBJECT_NAME} is an entrepreneur, CEO of JFJ Holdings, and Forbes Business Council member. He founded the {SUBJECT_NAME} Grant to invest in driven college students who refuse to let financial barriers define their future. Learn more on the{' '}
-                  <a href="/about" className="text-gold hover:underline">About page</a>.
+                  <Link to="/about" className="inline-link-on-dark">About page</Link>.
                 </p>
               </div>
             </FadeInSection>

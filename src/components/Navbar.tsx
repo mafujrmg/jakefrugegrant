@@ -37,10 +37,10 @@ export default function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-3 py-2 text-sm font-accent uppercase tracking-wider transition-colors duration-200 ${
+                className={`px-3 py-2 text-sm font-accent uppercase tracking-wider transition-colors duration-200 border-b-2 ${
                   pathname === link.to
-                    ? 'text-gold border-b-2 border-gold'
-                    : 'text-white/80 hover:text-gold'
+                    ? 'text-gold border-gold'
+                    : 'text-white/80 hover:text-gold border-transparent'
                 }`}
               >
                 {link.label}
