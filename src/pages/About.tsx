@@ -23,7 +23,7 @@ export default function About() {
               <img
                 src={IMAGES.jakeWhiteHoodie}
                 alt={`${SUBJECT_NAME} — entrepreneur, CEO of JFJ Holdings, and founder of the ${SUBJECT_NAME} Grant`}
-                className="w-full max-w-sm mx-auto"
+                className="w-full max-w-sm mx-auto rounded-lg shadow-2xl"
                 loading="lazy"
               />
             </FadeInSection>

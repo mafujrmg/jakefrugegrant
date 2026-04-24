@@ -62,7 +62,13 @@ export default function FAQ() {
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <DiamondDivider className="mb-10" />
+            <div className="text-center mb-10">
+              <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Common Questions</p>
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
+                {SUBJECT_NAME} Grant FAQ
+              </h2>
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
           <div className="space-y-3">

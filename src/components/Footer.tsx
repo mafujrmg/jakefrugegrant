@@ -54,7 +54,7 @@ export default function Footer() {
             <div className="mt-6">
               <p className="text-white/70 text-sm">
                 <strong className="text-white">Email:</strong>{' '}
-                <a href="mailto:info@jakefrugejrgrant.com" className="hover:text-gold transition-colors">
+                <a href="mailto:info@jakefrugejrgrant.com" className="inline-link-on-dark">
                   info@jakefrugejrgrant.com
                 </a>
               </p>
@@ -69,7 +69,7 @@ export default function Footer() {
           </p>
           <p className="text-white/50 text-xs">
             A philanthropic initiative by{' '}
-            <a href="https://www.jakefrugejr.com" target="_blank" rel="noopener noreferrer" className="text-gold/70 hover:text-gold transition-colors">
+            <a href="https://www.jakefrugejr.com" target="_blank" rel="noopener noreferrer" className="inline-link-on-dark">
               {SUBJECT_NAME}
             </a>
             , CEO of JFJ Holdings.
