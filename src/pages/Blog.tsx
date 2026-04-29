@@ -68,81 +68,66 @@ export default function Blog() {
               <p className="text-navy/60 font-display text-xl italic">No articles found at this time. Please check back soon.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-              {posts.map((post, i) => (
-                <FadeInSection key={post.id} delay={i * 0.1}>
-                  <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                    {post.featuredImage && (
-                      <div className="aspect-[16/10] overflow-hidden">
-                        <img
-                          src={post.featuredImage}
-                          alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                          loading="lazy"
-                        />
-                      </div>
-                    )}
-                    <div className="p-8">
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className="w-8 h-px bg-gold/50" />
-                        <p className="font-accent uppercase tracking-widest text-gold text-[10px] font-bold">
-                          {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                {posts.map((post, i) => (
+                  <FadeInSection key={post.id} delay={i * 0.1}>
+                    <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                      {post.featuredImage && (
+                        <div className="aspect-[16/10] overflow-hidden">
+                          <img
+                            src={post.featuredImage}
+                            alt={post.title}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                      <div className="p-8">
+                        <div className="flex items-center gap-2 mb-4">
+                          <span className="w-8 h-px bg-gold/50" />
+                          <p className="font-accent uppercase tracking-widest text-gold text-[10px] font-bold">
+                            {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                          </p>
+                        </div>
+                        <h2 className="font-display text-2xl font-bold text-navy mb-4 group-hover:text-gold transition-colors leading-snug">
+                          {post.title}
+                        </h2>
+                        <p className="text-navy/70 text-sm leading-relaxed line-clamp-3 mb-6">
+                          {stripHtml(post.excerpt)}
                         </p>
+                        <span className="font-accent uppercase tracking-[0.2em] text-[10px] font-bold text-navy group-hover:text-gold transition-colors flex items-center gap-2">
+                          Read Article <span>&rarr;</span>
+                        </span>
                       </div>
-                      <h2 className="font-display text-2xl font-bold text-navy mb-4 group-hover:text-gold transition-colors leading-snug">
-                        {post.title}
-                      </h2>
-                      <p className="text-navy/70 text-sm leading-relaxed line-clamp-3 mb-6">
-                        {stripHtml(post.excerpt)}
-                      </p>
-                      <span className="font-accent uppercase tracking-[0.2em] text-[10px] font-bold text-navy group-hover:text-gold transition-colors flex items-center gap-2">
-                        Read Article <span>&rarr;</span>
-                      </span>
-                    </div>
-                  </Link>
-                </FadeInSection>
-              ))}
-            </div>
-          )}
+                    </Link>
+                  </FadeInSection>
+                ))}
+              </div>
 
-                    <div className="p-6">
-                      <p className="font-accent uppercase tracking-wider text-gold text-xs mb-2">
-                        {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                      </p>
-                      <h2 className="font-display text-xl font-bold text-navy mb-2 group-hover:text-gold transition-colors">
-                        {post.title}
-                      </h2>
-                      <p className="text-navy/70 text-sm leading-relaxed line-clamp-3">
-                        {stripHtml(post.excerpt)}
-                      </p>
-                    </div>
-                  </Link>
-                </FadeInSection>
-              ))}
-            </div>
-          )}
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-3 mt-12">
-              <button
-                onClick={() => setPage((p) => Math.max(1, p - 1))}
-                disabled={page === 1}
-                className="px-4 py-2 font-accent uppercase tracking-wider text-xs border border-navy/20 text-navy disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
-              >
-                Previous
-              </button>
-              <span className="text-navy/60 text-sm">
-                Page {page} of {totalPages}
-              </span>
-              <button
-                onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                disabled={page === totalPages}
-                className="px-4 py-2 font-accent uppercase tracking-wider text-xs border border-navy/20 text-navy disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
-              >
-                Next
-              </button>
-            </div>
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-3 mt-12">
+                  <button
+                    onClick={() => setPage((p) => Math.max(1, p - 1))}
+                    disabled={page === 1}
+                    className="px-4 py-2 font-accent uppercase tracking-wider text-xs border border-navy/20 text-navy disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
+                  >
+                    Previous
+                  </button>
+                  <span className="text-navy/60 text-sm">
+                    Page {page} of {totalPages}
+                  </span>
+                  <button
+                    onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+                    disabled={page === totalPages}
+                    className="px-4 py-2 font-accent uppercase tracking-wider text-xs border border-navy/20 text-navy disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
