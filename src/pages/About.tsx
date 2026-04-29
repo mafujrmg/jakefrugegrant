@@ -16,107 +16,115 @@ export default function About() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-16 md:py-24">
+      <section className="bg-navy py-24 md:py-32">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeInSection direction="left">
-              <img
-                src={IMAGES.jakeWhiteHoodie}
-                alt={`${SUBJECT_NAME} — entrepreneur, CEO of JFJ Holdings, and founder of the ${SUBJECT_NAME} Grant`}
-                className="w-full max-w-sm mx-auto"
-                loading="lazy"
-              />
+              <div className="relative inline-block">
+                <div className="absolute -inset-4 border-2 border-gold/20 rounded-full animate-pulse" />
+                <img
+                  src={IMAGES.jakeWhiteHoodie}
+                  alt={`${SUBJECT_NAME} — entrepreneur, CEO of JFJ Holdings, and founder of the ${SUBJECT_NAME} Grant`}
+                  className="relative z-10 w-full max-w-sm mx-auto rounded-lg shadow-2xl"
+                  loading="lazy"
+                />
+              </div>
             </FadeInSection>
             <FadeInSection direction="right">
-              <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">About the Founder</p>
-              <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
+              <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">The Founder</p>
+              <h1 className="font-display text-4xl md:text-7xl font-bold text-white mb-6">
                 {SUBJECT_NAME}
               </h1>
-              <p className="text-white/60 font-accent uppercase tracking-wider text-sm mb-4">
-                Entrepreneur &bull; CEO of JFJ Holdings &bull; Forbes Business Council Member
-              </p>
-              <p className="text-white/80 leading-relaxed mb-4">
+              <div className="flex flex-wrap gap-3 mb-8">
+                {['Entrepreneur', 'CEO of JFJ Holdings', 'Forbes Council'].map((tag) => (
+                  <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-white/60 font-accent uppercase tracking-widest text-[10px] rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed mb-10 font-light">
                 Known as "The People's Champ," {SUBJECT_NAME} is a self-made entrepreneur who transformed a childhood marked by instability into a career defined by record-breaking achievement and relentless service to others.
               </p>
-              <SocialIcons links={SOCIAL_LINKS} />
+              <SocialIcons links={SOCIAL_LINKS} className="!justify-start" />
             </FadeInSection>
           </div>
         </div>
       </section>
 
       {/* Early Life */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <FadeInSection>
             <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">The Beginning</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              The Early Life of {SUBJECT_NAME}
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
+              Early Life & Resilience
             </h2>
-            <DiamondDivider className="mb-8" />
+            <DiamondDivider />
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <p className="text-navy/80 leading-relaxed mb-4">
-              {SUBJECT_NAME} did not grow up with the advantages that many associate with business success. He lived in more than 30 cities before adulthood, attended 19 different schools, and spent much of his childhood navigating the consequences of having parents who were in and out of incarceration. By the age of 17, {SUBJECT_NAME} was on his own, doing whatever it took to survive.
-            </p>
-            <p className="text-navy/80 leading-relaxed mb-4">
-              There was no trust fund, no family business to inherit, and no network of connections to lean on. What {SUBJECT_NAME} did have was an unshakable belief that his circumstances did not have to be his destiny. That belief — forged in adversity and sharpened by necessity — became the foundation of everything he would go on to build.
-            </p>
-            <p className="text-navy/80 leading-relaxed">
-              At 21, {SUBJECT_NAME} made a pivotal decision. He gave his life to Christ and entered the financial services industry with zero experience, zero contacts, and zero guarantees. What happened next would rewrite the trajectory of his life and the lives of tens of thousands of people who followed his lead.
-            </p>
+            <div className="mt-12 space-y-6 text-navy/80 text-lg leading-relaxed max-w-3xl mx-auto">
+              <p>
+                {SUBJECT_NAME} did not grow up with the advantages that many associate with business success. He lived in more than 30 cities before adulthood, attended 19 different schools, and spent much of his childhood navigating the consequences of having parents who were in and out of incarceration. By the age of 17, {SUBJECT_NAME} was on his own, doing whatever it took to survive.
+              </p>
+              <p>
+                There was no trust fund, no family business to inherit, and no network of connections to lean on. What {SUBJECT_NAME} did have was an unshakable belief that his circumstances did not have to be his destiny. That belief — forged in adversity and sharpened by necessity — became the foundation of everything he would go on to build.
+              </p>
+              <p>
+                At 21, {SUBJECT_NAME} made a pivotal decision. He gave his life to Christ and entered the financial services industry with zero experience, zero contacts, and zero guarantees. What happened next would rewrite the trajectory of his life and the lives of tens of thousands of people who followed his lead.
+              </p>
+            </div>
           </FadeInSection>
         </div>
       </section>
 
       {/* Career & Achievements */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Career & Impact</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              {SUBJECT_NAME} Built an Empire From Nothing
-            </h2>
-            <DiamondDivider className="mb-8" />
+            <div className="text-center mb-16">
+              <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Career & Impact</p>
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
+                Built From Nothing
+              </h2>
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <p className="text-navy/80 leading-relaxed mb-4">
-              In his first year in financial services, {SUBJECT_NAME} generated $330,000 in revenue — a figure that shattered existing records and signaled the arrival of a force that the industry had never seen. He did not slow down. Over the next decade, {SUBJECT_NAME} accumulated more than $100 million in personal sales and led teams that collectively produced over $1 billion in revenue.
-            </p>
-            <p className="text-navy/80 leading-relaxed mb-4">
-              But {SUBJECT_NAME} was never just about personal production. He recruited and trained over 40,000 agents, building a culture of excellence, accountability, and service that extended far beyond his own results. His ability to develop people — to see potential where others saw risk — became his defining leadership trait.
-            </p>
-            <p className="text-navy/80 leading-relaxed mb-6">
-              {SUBJECT_NAME} became a millionaire by age 26 and eventually executed a multi-seven-figure exit before founding JFJ Holdings, the nine-figure holdings company he leads today as CEO. With more than 30 companies under its umbrella, JFJ Holdings reflects the breadth of {SUBJECT_NAME}'s vision and his commitment to building enterprises that create lasting value.
-            </p>
+            <div className="space-y-6 text-navy/80 text-lg leading-relaxed mb-16">
+              <p>
+                In his first year in financial services, {SUBJECT_NAME} generated $330,000 in revenue — a figure that shattered existing records and signaled the arrival of a force that the industry had never seen. He did not slow down. Over the next decade, {SUBJECT_NAME} accumulated more than $100 million in personal sales and led teams that collectively produced over $1 billion in revenue.
+              </p>
+              <p>
+                But {SUBJECT_NAME} was never just about personal production. He recruited and trained over 40,000 agents, building a culture of excellence, accountability, and service that extended far beyond his own results. His ability to develop people — to see potential where others saw risk — became his defining leadership trait.
+              </p>
+            </div>
           </FadeInSection>
 
           <FadeInSection delay={0.3}>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto shadow-2xl rounded-xl">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-navy text-white">
-                    <th className="px-6 py-3 text-left font-accent uppercase tracking-wider text-sm">Achievement</th>
-                    <th className="px-6 py-3 text-left font-accent uppercase tracking-wider text-sm">Detail</th>
+                    <th className="px-8 py-5 text-left font-accent uppercase tracking-wider text-sm">Achievement</th>
+                    <th className="px-8 py-5 text-left font-accent uppercase tracking-wider text-sm">Detail</th>
                   </tr>
                 </thead>
                 <tbody>
                   {[
                     ['Personal Sales', '$100M+'],
                     ['Team Sales', '$1B+'],
-                    ['Agents Recruited & Trained', '40,000+'],
-                    ['First-Year Revenue', '$330,000 (industry record)'],
+                    ['Agents Recruited', '40,000+'],
+                    ['First-Year Revenue', '$330,000 (Record)'],
                     ['Millionaire By', 'Age 26'],
-                    ['Exit', 'Multi-7-figure'],
-                    ['Current Role', 'CEO, JFJ Holdings (30+ companies)'],
-                    ['Revenue (JFJ Holdings)', 'Nine figures annually'],
-                    ['Education', 'University of Louisiana at Lafayette'],
-                    ['Recognition', 'Forbes Business Council Member'],
+                    ['Current Role', 'CEO, JFJ Holdings'],
+                    ['Company Size', '30+ Businesses'],
+                    ['Recognition', 'Forbes Council'],
                   ].map(([achievement, detail], i) => (
-                    <tr key={i} className={i % 2 === 0 ? 'bg-cream' : 'bg-white'}>
-                      <td className="px-6 py-3 font-semibold text-navy text-sm">{achievement}</td>
-                      <td className="px-6 py-3 text-navy/80 text-sm">{detail}</td>
+                    <tr key={i} className={i % 2 === 0 ? 'bg-cream/30' : 'bg-white'}>
+                      <td className="px-8 py-4 font-bold text-navy text-xs md:text-sm uppercase tracking-widest border-b border-navy/5">{achievement}</td>
+                      <td className="px-8 py-4 text-navy/80 text-sm md:text-base border-b border-navy/5">{detail}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -127,31 +135,36 @@ export default function About() {
       </section>
 
       {/* Why the Grant */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <FadeInSection direction="left">
               <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">The Mission</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-6">
-                Why {SUBJECT_NAME} Created This Grant
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-8">
+                Why I Created This Grant
               </h2>
-              <p className="text-navy/80 leading-relaxed mb-4">
-                {SUBJECT_NAME} knows what it feels like to have ambition without resources. He knows the weight of choosing between paying rent and paying tuition. He knows that talent is evenly distributed, but opportunity is not. The {SUBJECT_NAME} Grant exists to close that gap — even if only for one student at a time.
-              </p>
-              <p className="text-navy/80 leading-relaxed mb-4">
-                Unlike traditional grants that focus on academic metrics, the {SUBJECT_NAME} Grant is built on a different philosophy: that drive, resilience, and a willingness to work are the true predictors of success. {SUBJECT_NAME} did not have a 4.0 GPA when he started. He had hunger, discipline, and an unwillingness to quit. He is looking for students who share that same fire.
-              </p>
-              <p className="text-navy/80 leading-relaxed">
-                This grant is not charity. It is an investment — in a person, in a future, and in the belief that one act of support can set off a chain reaction of achievement that extends far beyond the individual.
-              </p>
+              <div className="space-y-6 text-navy/80 text-lg leading-relaxed">
+                <p>
+                  {SUBJECT_NAME} knows what it feels like to have ambition without resources. He knows the weight of choosing between paying rent and paying tuition. He knows that talent is evenly distributed, but opportunity is not. The {SUBJECT_NAME} Grant exists to close that gap — even if only for one student at a time.
+                </p>
+                <p>
+                  Unlike traditional grants that focus on academic metrics, the {SUBJECT_NAME} Grant is built on a different philosophy: that drive, resilience, and a willingness to work are the true predictors of success.
+                </p>
+                <p>
+                  This grant is not charity. It is an investment — in a person, in a future, and in the belief that one act of support can set off a chain reaction of achievement that extends far beyond the individual.
+                </p>
+              </div>
             </FadeInSection>
             <FadeInSection direction="right">
-              <img
-                src={IMAGES.jakeTeamPhoto}
-                alt={`${SUBJECT_NAME} with his team — demonstrating the leadership and mentorship that inspired the ${SUBJECT_NAME} Grant`}
-                className="w-full rounded-lg shadow-xl"
-                loading="lazy"
-              />
+              <div className="relative">
+                <div className="absolute -inset-4 border border-gold/30 rounded-lg translate-x-3 translate-y-3 hidden md:block" />
+                <img
+                  src={IMAGES.jakeTeamPhoto}
+                  alt={`${SUBJECT_NAME} with his team — demonstrating the leadership and mentorship that inspired the ${SUBJECT_NAME} Grant`}
+                  className="relative z-10 w-full rounded-lg shadow-2xl"
+                  loading="lazy"
+                />
+              </div>
             </FadeInSection>
           </div>
         </div>

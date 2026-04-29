@@ -41,5 +41,24 @@ h1, h2, h3, h4, h5, h6 {
 .wp-content ul, .wp-content ol { margin: 1rem 0 1.25rem 1.5rem; }
 .wp-content li { margin-bottom: 0.5rem; line-height: 1.7; }
 .wp-content blockquote { border-left: 4px solid oklch(0.73 0.12 85); padding: 1rem 1.5rem; margin: 1.5rem 0; font-style: italic; background: oklch(0.93 0.01 85); }
-.wp-content a { color: oklch(0.73 0.12 85); text-decoration: underline; }
+.wp-content a { color: oklch(0.73 0.12 85); text-decoration: underline; font-weight: 700; }
 .wp-content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem 0; }
+
+/* Global Link Styles */
+a:not([class*="bg-"]):not([class*="border-"]):not([class*="font-accent"]) {
+  color: oklch(0.73 0.12 85);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
+}
+
+a:not([class*="bg-"]):not([class*="border-"]):not([class*="font-accent"]):hover {
+  opacity: 0.8;
+}
+
+/* Ensure buttons and specific nav links aren't affected by global underline/bold */
+.bg-gold, .bg-navy, .border-gold, .border-white, .font-accent {
+  text-decoration: none !important;
+}

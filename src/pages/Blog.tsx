@@ -33,51 +33,78 @@ export default function Blog() {
       />
 
       {/* Hero */}
-      <section className="relative py-16 md:py-20 overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMAGES.blogHero})` }} />
-        <div className="absolute inset-0 bg-navy/80" />
+        <div className="absolute inset-0 bg-navy/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Blog</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-              {SUBJECT_NAME} Grant Blog
+            <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Insights & News</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+              The {SUBJECT_NAME} Grant Blog
             </h1>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
-              Insights on entrepreneurship, financial literacy, resilience, and the mindset that drives success — from {SUBJECT_NAME} and the {SUBJECT_NAME} Grant team.
+            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+              Expert insights on entrepreneurship, financial literacy, and the mindset of success — from {SUBJECT_NAME} and the team.
             </p>
           </FadeInSection>
         </div>
       </section>
 
       {/* Posts Grid */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <DiamondDivider className="mb-10" />
+            <div className="text-center mb-16">
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
           {loading ? (
             <div className="text-center py-20">
-              <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin mx-auto" />
-              <p className="text-navy/60 mt-4 text-sm">Loading articles...</p>
+              <div className="w-10 h-10 border-3 border-gold border-t-transparent rounded-full animate-spin mx-auto shadow-[0_0_15px_rgba(184,134,11,0.2)]" />
+              <p className="text-navy/40 mt-6 font-accent uppercase tracking-widest text-xs">Loading articles...</p>
             </div>
           ) : posts.length === 0 ? (
-            <p className="text-center text-navy/60 py-20">No articles found.</p>
+            <div className="text-center py-20 bg-white rounded-xl shadow-sm">
+              <p className="text-navy/60 font-display text-xl italic">No articles found at this time. Please check back soon.</p>
+            </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
               {posts.map((post, i) => (
                 <FadeInSection key={post.id} delay={i * 0.1}>
-                  <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                  <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                     {post.featuredImage && (
-                      <div className="aspect-video overflow-hidden">
+                      <div className="aspect-[16/10] overflow-hidden">
                         <img
                           src={post.featuredImage}
                           alt={post.title}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                           loading="lazy"
                         />
                       </div>
                     )}
+                    <div className="p-8">
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="w-8 h-px bg-gold/50" />
+                        <p className="font-accent uppercase tracking-widest text-gold text-[10px] font-bold">
+                          {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </p>
+                      </div>
+                      <h2 className="font-display text-2xl font-bold text-navy mb-4 group-hover:text-gold transition-colors leading-snug">
+                        {post.title}
+                      </h2>
+                      <p className="text-navy/70 text-sm leading-relaxed line-clamp-3 mb-6">
+                        {stripHtml(post.excerpt)}
+                      </p>
+                      <span className="font-accent uppercase tracking-[0.2em] text-[10px] font-bold text-navy group-hover:text-gold transition-colors flex items-center gap-2">
+                        Read Article <span>&rarr;</span>
+                      </span>
+                    </div>
+                  </Link>
+                </FadeInSection>
+              ))}
+            </div>
+          )}
+
                     <div className="p-6">
                       <p className="font-accent uppercase tracking-wider text-gold text-xs mb-2">
                         {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}

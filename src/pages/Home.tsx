@@ -66,12 +66,12 @@ export default function Home() {
       </section>
 
       {/* GRANT OVERVIEW */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">About the Grant</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
                 The {SUBJECT_NAME} Grant at a Glance
               </h2>
               <DiamondDivider />
@@ -79,14 +79,14 @@ export default function Home() {
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <p className="text-center text-navy/80 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <p className="text-center text-navy/90 max-w-3xl mx-auto mb-16 text-lg leading-relaxed">
               The {SUBJECT_NAME} Grant was established to bridge the gap between ambition and resources. {SUBJECT_NAME} understands firsthand that financial obstacles should never determine a student's ceiling. This grant is open to any undergraduate or graduate student enrolled at an accredited US institution — because potential does not come with prerequisites.
             </p>
           </FadeInSection>
 
           <FadeInSection delay={0.3}>
-            <div className="overflow-x-auto">
-              <table className="w-full max-w-2xl mx-auto border-collapse">
+            <div className="overflow-x-auto pb-4">
+              <table className="w-full max-w-3xl mx-auto border-collapse shadow-sm rounded-lg overflow-hidden">
                 <tbody>
                   {[
                     ['Grant Amount', GRANT_AMOUNT],
@@ -97,9 +97,9 @@ export default function Home() {
                     ['Application Deadline', GRANT_DEADLINE],
                     ['Winner Announced', GRANT_WINNER_DATE],
                   ].map(([label, value], i) => (
-                    <tr key={i} className={i % 2 === 0 ? 'bg-cream-dark' : 'bg-cream'}>
-                      <td className="px-6 py-3 font-accent uppercase tracking-wider text-sm text-navy font-semibold">{label}</td>
-                      <td className="px-6 py-3 text-navy/80">{value}</td>
+                    <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-cream-dark'}>
+                      <td className="px-8 py-4 font-accent uppercase tracking-wider text-xs md:text-sm text-navy font-bold border-b border-navy/5">{label}</td>
+                      <td className="px-8 py-4 text-navy/80 text-sm md:text-base border-b border-navy/5">{value}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -110,34 +110,37 @@ export default function Home() {
       </section>
 
       {/* FOUNDER INTRO */}
-      <section className="py-16 md:py-24 bg-navy">
+      <section className="py-20 md:py-28 bg-navy">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <FadeInSection direction="left">
-              <img
-                src={IMAGES.jakeForbesSuit}
-                alt={`${SUBJECT_NAME} in a professional suit — entrepreneur, CEO of JFJ Holdings, and founder of the ${SUBJECT_NAME} Grant`}
-                className="w-full max-w-md mx-auto rounded-lg shadow-2xl"
-                loading="lazy"
-              />
+              <div className="relative">
+                <div className="absolute -inset-4 border border-gold/30 rounded-lg translate-x-2 translate-y-2 hidden md:block" />
+                <img
+                  src={IMAGES.jakeForbesSuit}
+                  alt={`${SUBJECT_NAME} in a professional suit — entrepreneur, CEO of JFJ Holdings, and founder of the ${SUBJECT_NAME} Grant`}
+                  className="relative z-10 w-full rounded-lg shadow-2xl"
+                  loading="lazy"
+                />
+              </div>
             </FadeInSection>
             <FadeInSection direction="right">
               <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Meet the Founder</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-8">
                 {SUBJECT_NAME}: From Adversity to Enterprise
               </h2>
-              <p className="text-white/80 leading-relaxed mb-4">
+              <p className="text-white/80 text-lg leading-relaxed mb-6">
                 {SUBJECT_NAME} grew up in over 30 cities, attended 19 different schools, and watched his parents cycle in and out of incarceration. By 17, he was hustling to survive. At 21, he made a decision that changed everything — he entered financial services and never looked back.
               </p>
-              <p className="text-white/80 leading-relaxed mb-4">
+              <p className="text-white/80 text-lg leading-relaxed mb-6">
                 In his first year, {SUBJECT_NAME} generated $330,000 in revenue, shattering industry records. He went on to achieve over $100 million in personal sales, lead teams responsible for more than $1 billion in collective revenue, and recruit and train over 40,000 agents. Today, as CEO of JFJ Holdings — a nine-figure holdings company with 30+ businesses — {SUBJECT_NAME} channels his success into empowering others.
               </p>
-              <p className="text-white/80 leading-relaxed mb-6">
+              <p className="text-white/80 text-lg leading-relaxed mb-10">
                 The {SUBJECT_NAME} Grant is a direct expression of that mission: investing in students who refuse to let their circumstances define their future.
               </p>
               <Link
                 to="/about"
-                className="inline-block border border-gold text-gold hover:bg-gold hover:text-navy font-accent uppercase tracking-wider px-6 py-2.5 text-sm transition-colors duration-300"
+                className="inline-block border-2 border-gold text-gold hover:bg-gold hover:text-navy font-accent uppercase tracking-wider px-8 py-3.5 text-sm font-bold transition-colors duration-300"
               >
                 Read Full Story
               </Link>
@@ -147,19 +150,19 @@ export default function Home() {
       </section>
 
       {/* HOW TO APPLY */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Application Process</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
                 How to Apply for the {SUBJECT_NAME} Grant
               </h2>
               <DiamondDivider />
             </div>
           </FadeInSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
             {[
               {
                 step: '01',
@@ -178,10 +181,10 @@ export default function Home() {
               },
             ].map((item, i) => (
               <FadeInSection key={i} delay={i * 0.15}>
-                <div className="bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow">
-                  <span className="font-accent text-4xl font-bold text-gold">{item.step}</span>
-                  <h3 className="font-display text-xl font-bold text-navy mt-4 mb-3">{item.title}</h3>
-                  <p className="text-navy/70 text-sm leading-relaxed">{item.desc}</p>
+                <div className="bg-white p-10 rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-gold h-full">
+                  <span className="font-accent text-5xl font-bold text-gold/20 block mb-6">{item.step}</span>
+                  <h3 className="font-display text-2xl font-bold text-navy mb-4">{item.title}</h3>
+                  <p className="text-navy/70 leading-relaxed">{item.desc}</p>
                 </div>
               </FadeInSection>
             ))}
@@ -209,23 +212,23 @@ export default function Home() {
       </section>
 
       {/* STUDENTS IMAGE SECTION */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <FadeInSection direction="left">
               <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Who This Grant Is For</p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-6">
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-8">
                 {SUBJECT_NAME} Invests in Driven Students
               </h2>
-              <p className="text-navy/80 leading-relaxed mb-4">
+              <p className="text-navy/80 text-lg leading-relaxed mb-6">
                 The {SUBJECT_NAME} Grant is not about grades or test scores. It is about recognizing students who demonstrate initiative, resilience, and a genuine commitment to building something meaningful with their education. Whether you are studying engineering, education, business, or the arts, this grant is designed for students who refuse to let financial barriers slow them down.
               </p>
-              <p className="text-navy/80 leading-relaxed mb-6">
+              <p className="text-navy/80 text-lg leading-relaxed mb-10">
                 {SUBJECT_NAME} built JFJ Holdings from nothing — no inheritance, no safety net, no connections. He knows what it means to fight for every opportunity. The {SUBJECT_NAME} Grant is his way of ensuring that the next generation of builders, creators, and leaders has one fewer obstacle in their path.
               </p>
               <Link
                 to="/eligibility"
-                className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-6 py-2.5 text-sm transition-colors duration-300"
+                className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-8 py-3.5 text-sm font-bold transition-colors duration-300"
               >
                 View Full Eligibility
               </Link>
@@ -234,7 +237,7 @@ export default function Home() {
               <img
                 src={IMAGES.campusStudents}
                 alt={`College students collaborating — the ${SUBJECT_NAME} Grant supports driven undergraduate and graduate students across the United States`}
-                className="w-full rounded-lg shadow-xl"
+                className="w-full rounded-lg shadow-2xl"
                 loading="lazy"
               />
             </FadeInSection>
@@ -243,18 +246,18 @@ export default function Home() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="py-16 md:py-20 bg-gold">
+      <section className="py-20 md:py-28 bg-gold">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6">
               Ready to Claim Your {SUBJECT_NAME} Grant?
             </h2>
-            <p className="text-navy/80 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-navy/90 text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
               Applications for the 2026 {SUBJECT_NAME} Grant are now open. The deadline is {GRANT_DEADLINE}. Do not let this opportunity pass.
             </p>
             <Link
               to="/apply"
-              className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-10 py-3.5 text-sm font-semibold transition-colors duration-300"
+              className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-12 py-4 text-sm font-bold shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               Apply Now
             </Link>

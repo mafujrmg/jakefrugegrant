@@ -32,18 +32,19 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden md:flex items-center gap-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-3 py-2 text-sm font-accent uppercase tracking-wider transition-colors duration-200 ${
+                className={`px-4 py-2 text-xs lg:text-sm font-accent uppercase tracking-[0.2em] transition-all duration-300 relative group ${
                   pathname === link.to
-                    ? 'text-gold border-b-2 border-gold'
-                    : 'text-white/80 hover:text-gold'
+                    ? 'text-gold'
+                    : 'text-white/70 hover:text-white'
                 }`}
               >
                 {link.label}
+                <span className={`absolute bottom-0 left-4 right-4 h-0.5 bg-gold transition-transform duration-300 ${pathname === link.to ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
               </Link>
             ))}
           </div>
@@ -61,17 +62,17 @@ export default function Navbar() {
 
       {/* Mobile nav */}
       {open && (
-        <div className="md:hidden bg-navy border-t border-white/10">
-          <div className="px-4 py-3 space-y-1">
+        <div className="md:hidden bg-navy border-t border-white/5 animate-in fade-in slide-in-from-top-5 duration-300">
+          <div className="px-4 py-6 space-y-2">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 onClick={() => setOpen(false)}
-                className={`block px-3 py-2 font-accent uppercase tracking-wider text-sm transition-colors ${
+                className={`block px-4 py-3 font-accent uppercase tracking-[0.2em] text-xs transition-all ${
                   pathname === link.to
-                    ? 'text-gold bg-white/5'
-                    : 'text-white/80 hover:text-gold'
+                    ? 'text-gold bg-white/5 border-l-2 border-gold'
+                    : 'text-white/60 hover:text-white hover:bg-white/5'
                 }`}
               >
                 {link.label}

@@ -15,14 +15,14 @@ export default function Eligibility() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-16 md:py-20">
+      <section className="bg-navy py-20 md:py-32">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Grant Details</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-4">Grant Details</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
               {SUBJECT_NAME} Grant Eligibility & Details
             </h1>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
+            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               The {SUBJECT_NAME} Grant is intentionally accessible. {SUBJECT_NAME} designed this grant to remove barriers, not create them. Here is everything you need to know.
             </p>
           </FadeInSection>
@@ -30,17 +30,19 @@ export default function Eligibility() {
       </section>
 
       {/* Requirements */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Requirements</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              {SUBJECT_NAME} Grant Eligibility Requirements
-            </h2>
-            <DiamondDivider className="mb-10" />
+            <div className="text-center mb-16">
+              <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Requirements</p>
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
+                Eligibility Requirements
+              </h2>
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             {[
               {
                 num: '01',
@@ -69,11 +71,11 @@ export default function Eligibility() {
               },
             ].map((req, i) => (
               <FadeInSection key={i} delay={i * 0.1}>
-                <div className="bg-white p-6 rounded-lg shadow-sm flex gap-5">
-                  <span className="font-accent text-3xl font-bold text-gold shrink-0">{req.num}</span>
+                <div className="bg-white p-8 rounded-lg shadow-md flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-shadow duration-300 border-l-4 border-gold">
+                  <span className="font-accent text-4xl font-bold text-gold/30 shrink-0">{req.num}</span>
                   <div>
-                    <h3 className="font-display text-xl font-bold text-navy mb-2">{req.title}</h3>
-                    <p className="text-navy/70 leading-relaxed text-sm">{req.desc}</p>
+                    <h3 className="font-display text-2xl font-bold text-navy mb-3">{req.title}</h3>
+                    <p className="text-navy/70 leading-relaxed text-base">{req.desc}</p>
                   </div>
                 </div>
               </FadeInSection>
@@ -83,23 +85,25 @@ export default function Eligibility() {
       </section>
 
       {/* Summary Table */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Summary</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              {SUBJECT_NAME} Grant Summary
-            </h2>
-            <DiamondDivider className="mb-10" />
+            <div className="text-center mb-16">
+              <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Summary</p>
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
+                Grant Summary
+              </h2>
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto shadow-xl rounded-lg">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-navy text-white">
-                    <th className="px-6 py-3 text-left font-accent uppercase tracking-wider text-sm">Criteria</th>
-                    <th className="px-6 py-3 text-left font-accent uppercase tracking-wider text-sm">Requirement</th>
+                    <th className="px-8 py-5 text-left font-accent uppercase tracking-wider text-sm">Criteria</th>
+                    <th className="px-8 py-5 text-left font-accent uppercase tracking-wider text-sm">Requirement</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -114,9 +118,9 @@ export default function Eligibility() {
                     ['Grant Amount', GRANT_AMOUNT],
                     ['Number of Recipients', '1 per year'],
                   ].map(([criteria, req], i) => (
-                    <tr key={i} className={i % 2 === 0 ? 'bg-cream' : 'bg-white'}>
-                      <td className="px-6 py-3 font-semibold text-navy text-sm">{criteria}</td>
-                      <td className="px-6 py-3 text-navy/80 text-sm">{req}</td>
+                    <tr key={i} className={i % 2 === 0 ? 'bg-cream/30' : 'bg-white'}>
+                      <td className="px-8 py-4 font-bold text-navy text-sm uppercase tracking-tight border-b border-navy/5">{criteria}</td>
+                      <td className="px-8 py-4 text-navy/80 text-base border-b border-navy/5">{req}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -127,17 +131,19 @@ export default function Eligibility() {
       </section>
 
       {/* Timeline */}
-      <section className="py-16 md:py-24 bg-cream">
+      <section className="py-20 md:py-28 bg-cream">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">2026 Timeline</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              {SUBJECT_NAME} Grant 2026 Timeline
-            </h2>
-            <DiamondDivider className="mb-10" />
+            <div className="text-center mb-16">
+              <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">2026 Timeline</p>
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
+                Grant Timeline
+              </h2>
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
-          <div className="space-y-6 max-w-2xl mx-auto">
+          <div className="space-y-10 max-w-2xl mx-auto">
             {[
               { date: 'Now', event: 'Applications Open', desc: `The ${SUBJECT_NAME} Grant application is live and accepting submissions.` },
               { date: GRANT_DEADLINE, event: 'Application Deadline', desc: 'All applications must be submitted by 11:59 PM EST.' },
@@ -145,12 +151,12 @@ export default function Eligibility() {
               { date: GRANT_WINNER_DATE, event: 'Winner Announced', desc: `The ${SUBJECT_NAME} Grant recipient is notified and announced publicly.` },
             ].map((item, i) => (
               <FadeInSection key={i} delay={i * 0.1}>
-                <div className="flex gap-5 items-start">
-                  <div className="w-3 h-3 mt-2 rotate-45 bg-gold shrink-0" />
+                <div className="flex gap-6 items-start">
+                  <div className="w-4 h-4 mt-2 rotate-45 bg-gold shrink-0 shadow-[0_0_10px_rgba(184,134,11,0.3)]" />
                   <div>
-                    <p className="font-accent uppercase tracking-wider text-gold text-xs mb-1">{item.date}</p>
-                    <h3 className="font-display text-lg font-bold text-navy mb-1">{item.event}</h3>
-                    <p className="text-navy/70 text-sm">{item.desc}</p>
+                    <p className="font-accent uppercase tracking-wider text-gold text-xs font-bold mb-1">{item.date}</p>
+                    <h3 className="font-display text-2xl font-bold text-navy mb-2">{item.event}</h3>
+                    <p className="text-navy/70 text-base leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               </FadeInSection>
@@ -160,43 +166,47 @@ export default function Eligibility() {
       </section>
 
       {/* Selection Criteria */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-20 md:py-28 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Selection</p>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              How the {SUBJECT_NAME} Grant Recipient Is Selected
-            </h2>
-            <DiamondDivider className="mb-8" />
+            <div className="text-center mb-16">
+              <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Selection</p>
+              <h2 className="font-display text-3xl md:text-5xl font-bold text-navy mb-4">
+                Selection Process
+              </h2>
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <p className="text-navy/80 leading-relaxed mb-4">
-              The {SUBJECT_NAME} Grant selection process is designed to identify students who embody the same qualities that {SUBJECT_NAME} values most: drive, resilience, and a genuine commitment to making the most of their education. The selection committee evaluates applications holistically, considering the applicant's brief statement, their academic context, and the overall strength of their candidacy.
-            </p>
-            <p className="text-navy/80 leading-relaxed mb-4">
-              Because the {SUBJECT_NAME} Grant has no GPA or essay requirement, the brief statement carries significant weight. Applicants are encouraged to be authentic, specific, and direct about why they deserve this investment in their future.
-            </p>
-            <p className="text-navy/80 leading-relaxed">
-              {SUBJECT_NAME} personally participates in the final selection process, ensuring that the grant goes to a student whose story and ambition align with the mission of the {SUBJECT_NAME} Grant: fueling the next generation of doers.
-            </p>
+            <div className="prose prose-lg max-w-none text-navy/80 leading-relaxed space-y-6">
+              <p>
+                The {SUBJECT_NAME} Grant selection process is designed to identify students who embody the same qualities that {SUBJECT_NAME} values most: drive, resilience, and a genuine commitment to making the most of their education. The selection committee evaluates applications holistically, considering the applicant's brief statement, their academic context, and the overall strength of their candidacy.
+              </p>
+              <p>
+                Because the {SUBJECT_NAME} Grant has no GPA or essay requirement, the brief statement carries significant weight. Applicants are encouraged to be authentic, specific, and direct about why they deserve this investment in their future.
+              </p>
+              <p>
+                {SUBJECT_NAME} personally participates in the final selection process, ensuring that the grant goes to a student whose story and ambition align with the mission of the {SUBJECT_NAME} Grant: fueling the next generation of doers.
+              </p>
+            </div>
           </FadeInSection>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-gold">
+      <section className="py-20 md:py-28 bg-gold">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
-              You Qualify? Apply for the {SUBJECT_NAME} Grant Now.
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6">
+              Do You Qualify?
             </h2>
-            <p className="text-navy/80 text-lg mb-8">
+            <p className="text-navy/90 text-xl mb-10 leading-relaxed">
               The application takes less than five minutes. The deadline is {GRANT_DEADLINE}.
             </p>
             <Link
               to="/apply"
-              className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-10 py-3.5 text-sm font-semibold transition-colors duration-300"
+              className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-12 py-4 text-sm font-bold shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               Apply Now
             </Link>

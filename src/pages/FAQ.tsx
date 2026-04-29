@@ -44,45 +44,49 @@ export default function FAQ() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-16 md:py-20">
+      <section className="bg-navy py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">FAQ</p>
-            <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
-              {SUBJECT_NAME} Grant — Frequently Asked Questions
+            <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Support Center</p>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+              Frequently Asked Questions
             </h1>
-            <p className="text-white/80 text-lg max-w-2xl mx-auto">
-              Everything you need to know about the {SUBJECT_NAME} Grant, answered.
+            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+              Everything you need to know about the {SUBJECT_NAME} Grant, our mission, and the application process.
             </p>
           </FadeInSection>
         </div>
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-16 md:py-24 bg-cream">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeInSection>
-            <DiamondDivider className="mb-10" />
+            <div className="text-center mb-16">
+              <DiamondDivider />
+            </div>
           </FadeInSection>
 
-          <div className="space-y-3">
+          <div className="space-y-4 max-w-3xl mx-auto">
             {FAQS.map((faq, i) => (
               <FadeInSection key={i} delay={i * 0.05}>
-                <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-navy/5">
                   <button
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    className="w-full px-6 py-4 flex items-center justify-between text-left"
+                    className="w-full px-6 py-5 md:px-8 md:py-6 flex items-center justify-between text-left group"
                   >
-                    <span className="font-display text-lg font-semibold text-navy pr-4">{faq.q}</span>
-                    <span className={`text-gold text-2xl shrink-0 transition-transform duration-200 ${openIndex === i ? 'rotate-45' : ''}`}>
-                      +
+                    <span className={`font-display text-lg md:text-xl font-bold transition-colors duration-200 ${openIndex === i ? 'text-gold' : 'text-navy group-hover:text-gold'}`}>
+                      {faq.q}
                     </span>
-                  </button>
-                  {openIndex === i && (
-                    <div className="px-6 pb-4">
-                      <p className="text-navy/70 leading-relaxed text-sm">{faq.a}</p>
+                    <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${openIndex === i ? 'bg-gold border-gold text-navy rotate-45' : 'border-gold/30 text-gold'}`}>
+                      <span className="text-xl font-bold">+</span>
                     </div>
-                  )}
+                  </button>
+                  <div className={`transition-all duration-300 ease-in-out ${openIndex === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                    <div className="px-6 pb-6 md:px-8 md:pb-8 border-t border-navy/5 mt-2 pt-4">
+                      <p className="text-navy/70 leading-relaxed text-base md:text-lg">{faq.a}</p>
+                    </div>
+                  </div>
                 </div>
               </FadeInSection>
             ))}
