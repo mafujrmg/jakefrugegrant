@@ -33,7 +33,7 @@ export default function Blog() {
       />
 
       {/* Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMAGES.blogHero})` }} />
         <div className="absolute inset-0 bg-navy/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -71,8 +71,8 @@ export default function Blog() {
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
               {posts.map((post, i) => (
-                <FadeInSection key={post.id} delay={i * 0.1}>
-                  <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 no-underline">
+                <FadeInSection key={post.id} delay={i * 0.1} className="h-full w-full">
+                  <Link to={`/blog/${post.slug}`} className="group flex flex-col h-full bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 no-underline">
                     {post.featuredImage && (
 
                         <div className="aspect-[16/10] overflow-hidden">
@@ -84,7 +84,7 @@ export default function Blog() {
                           />
                         </div>
                       )}
-                      <div className="p-8">
+                      <div className="p-8 flex flex-col flex-grow">
                         <div className="flex items-center gap-2 mb-4">
                           <span className="w-8 h-px bg-gold/50" />
                           <p className="font-accent uppercase tracking-widest text-gold text-[10px] font-bold">
@@ -97,9 +97,11 @@ export default function Blog() {
                         <p className="text-navy/70 text-sm leading-relaxed line-clamp-3 mb-6">
                           {stripHtml(post.excerpt)}
                         </p>
-                        <span className="font-accent uppercase tracking-[0.2em] text-[10px] font-bold text-navy group-hover:text-gold transition-colors flex items-center gap-2">
-                          Read Article <span>&rarr;</span>
-                        </span>
+                        <div className="mt-auto">
+                          <span className="font-accent uppercase tracking-[0.2em] text-[10px] font-bold text-navy group-hover:text-gold transition-colors flex items-center gap-2">
+                            Read Article <span>&rarr;</span>
+                          </span>
+                        </div>
                       </div>
                     </Link>
                   </FadeInSection>

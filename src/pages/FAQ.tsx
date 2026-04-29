@@ -44,7 +44,7 @@ export default function FAQ() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-24 md:py-32">
+      <section className="bg-navy py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
             <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Support Center</p>
@@ -70,7 +70,7 @@ export default function FAQ() {
           <div className="space-y-4 max-w-3xl mx-auto">
             {FAQS.map((faq, i) => (
               <FadeInSection key={i} delay={i * 0.05}>
-                <div className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-navy/5">
+                <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-navy/10 relative z-10">
                   <button
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
                     className="w-full px-6 py-5 md:px-8 md:py-6 flex items-center justify-between text-left group"

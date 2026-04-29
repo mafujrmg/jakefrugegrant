@@ -15,7 +15,7 @@ export default function Eligibility() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-20 md:py-32">
+      <section className="bg-navy py-16 md:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <FadeInSection>
             <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-4">Grant Details</p>
@@ -71,9 +71,9 @@ export default function Eligibility() {
               },
             ].map((req, i) => (
               <FadeInSection key={i} delay={i * 0.1}>
-                <div className="bg-white p-8 rounded-lg shadow-md flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-shadow duration-300 border-l-4 border-gold">
-                  <span className="font-accent text-4xl font-bold text-gold/30 shrink-0">{req.num}</span>
-                  <div>
+                <div className="bg-white p-8 rounded-lg shadow-md flex flex-col sm:flex-row gap-6 hover:shadow-lg transition-shadow duration-300 border-l-4 border-gold relative overflow-hidden">
+                  <span className="font-accent text-5xl font-bold text-gold/50 shrink-0">{req.num}</span>
+                  <div className="relative z-10">
                     <h3 className="font-display text-2xl font-bold text-navy mb-3">{req.title}</h3>
                     <p className="text-navy/70 leading-relaxed text-base">{req.desc}</p>
                   </div>

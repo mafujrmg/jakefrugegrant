@@ -16,7 +16,7 @@ export default function About() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-24 md:py-32">
+      <section className="bg-navy py-16 md:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeInSection direction="left">
@@ -35,9 +35,9 @@ export default function About() {
               <h1 className="font-display text-4xl md:text-7xl font-bold text-white mb-6">
                 {SUBJECT_NAME}
               </h1>
-              <div className="flex flex-wrap gap-3 mb-8">
+              <div className="flex flex-wrap gap-4 mb-8">
                 {['Entrepreneur', 'CEO of JFJ Holdings', 'Forbes Council'].map((tag) => (
-                  <span key={tag} className="px-3 py-1 bg-white/5 border border-white/10 text-white/60 font-accent uppercase tracking-widest text-[10px] rounded-full">
+                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-white/60 font-accent uppercase tracking-widest text-[10px] rounded-full inline-block">
                     {tag}
                   </span>
                 ))}

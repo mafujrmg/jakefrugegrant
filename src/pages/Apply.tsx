@@ -78,7 +78,7 @@ export default function Apply() {
       />
 
       {/* Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMAGES.applicationDesk})` }} />
         <div className="absolute inset-0 bg-navy/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -95,55 +95,55 @@ export default function Apply() {
       </section>
 
       {/* Form */}
-      <section className="py-20 md:py-28 bg-cream">
+      <section className="py-16 md:py-20 bg-cream relative z-20 mt-4 md:mt-8">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <form onSubmit={handleSubmit} noValidate className="bg-white p-8 md:p-12 rounded-xl shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* First Name */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">First Name</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">First Name</label>
                 <input name="firstName" type="text" className={inputClass('firstName')} placeholder="First name" />
                 {errors.firstName && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.firstName}</p>}
               </div>
               {/* Last Name */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Last Name</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Last Name</label>
                 <input name="lastName" type="text" className={inputClass('lastName')} placeholder="Last name" />
                 {errors.lastName && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.lastName}</p>}
               </div>
               {/* Email */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Email Address</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Email Address</label>
                 <input name="email" type="email" className={inputClass('email')} placeholder="you@email.com" />
                 {errors.email && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.email}</p>}
               </div>
               {/* Phone */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Phone Number</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Phone Number</label>
                 <input name="phone" type="tel" className={inputClass('phone')} placeholder="(555) 123-4567" />
                 {errors.phone && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.phone}</p>}
               </div>
               {/* Date of Birth */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Date of Birth</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Date of Birth</label>
                 <input name="dob" type="date" className={inputClass('dob')} />
                 {errors.dob && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.dob}</p>}
               </div>
               {/* Street Address */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Street Address</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Street Address</label>
                 <input name="street" type="text" className={inputClass('street')} placeholder="123 Main St" />
                 {errors.street && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.street}</p>}
               </div>
               {/* City */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">City</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">City</label>
                 <input name="city" type="text" className={inputClass('city')} placeholder="City" />
                 {errors.city && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.city}</p>}
               </div>
               {/* State */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">State</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">State</label>
                 <select name="state" className={inputClass('state')}>
                   <option value="">Select state</option>
                   {US_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -152,19 +152,19 @@ export default function Apply() {
               </div>
               {/* ZIP */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">ZIP Code</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">ZIP Code</label>
                 <input name="zip" type="text" className={inputClass('zip')} placeholder="70501" />
                 {errors.zip && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.zip}</p>}
               </div>
               {/* University */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">University / College Name</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">University / College Name</label>
                 <input name="university" type="text" className={inputClass('university')} placeholder="University name" />
                 {errors.university && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.university}</p>}
               </div>
               {/* Program Level */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Program Level</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Program Level</label>
                 <select name="programLevel" className={inputClass('programLevel')}>
                   <option value="">Select level</option>
                   <option value="Undergraduate">Undergraduate</option>
@@ -175,13 +175,13 @@ export default function Apply() {
               </div>
               {/* Major */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Field of Study / Major</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Field of Study / Major</label>
                 <input name="major" type="text" className={inputClass('major')} placeholder="e.g., Business Administration" />
                 {errors.major && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.major}</p>}
               </div>
               {/* Expected Graduation */}
               <div className="md:col-span-2">
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">Expected Graduation Date</label>
+                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Expected Graduation Date</label>
                 <input name="gradDate" type="date" className={inputClass('gradDate')} />
                 {errors.gradDate && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.gradDate}</p>}
               </div>
@@ -189,7 +189,7 @@ export default function Apply() {
 
             {/* Brief Statement */}
             <div className="mt-8">
-              <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-2">
+              <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">
                 Brief Statement — Why do you deserve the {SUBJECT_NAME} Grant? (500 characters max)
               </label>
               <textarea

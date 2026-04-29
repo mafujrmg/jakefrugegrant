@@ -35,7 +35,7 @@ export default function Contact() {
       />
 
       {/* Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative py-16 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMAGES.contactHero})` }} />
         <div className="absolute inset-0 bg-navy/85" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -56,7 +56,7 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
             {/* Left: Info */}
-            <FadeInSection direction="left">
+            <FadeInSection direction="left" className="min-w-0">
               <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-3">Contact Information</p>
               <h2 className="font-display text-4xl font-bold text-navy mb-8">
                 Connect With Us
@@ -73,7 +73,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-accent uppercase tracking-widest text-xs text-navy font-bold mb-1">Email Support</h3>
-                    <a href="mailto:info@jakefrugejrgrant.com" className="text-lg text-gold font-bold hover:underline decoration-2 underline-offset-4">
+                    <a href="mailto:info@jakefrugejrgrant.com" className="text-lg text-gold font-bold underline decoration-2 underline-offset-4 hover:opacity-80 transition-opacity">
                       info@jakefrugejrgrant.com
                     </a>
                   </div>
@@ -113,14 +113,14 @@ export default function Contact() {
                 <p className="text-white/70 text-base leading-relaxed mb-6 relative z-10">
                   {SUBJECT_NAME} is an entrepreneur, CEO of JFJ Holdings, and Forbes Business Council member. He founded this grant to invest in the next generation of builders.
                 </p>
-                <a href="/about" className="inline-flex items-center gap-2 text-gold font-accent uppercase tracking-widest text-xs font-bold hover:gap-3 transition-all">
+                <a href="/about" className="inline-flex items-center gap-2 text-gold font-accent uppercase tracking-widest text-xs font-bold underline underline-offset-4 hover:gap-3 transition-all relative z-10">
                   Read His Story <span>&rarr;</span>
                 </a>
               </div>
             </FadeInSection>
 
             {/* Right: Form */}
-            <FadeInSection direction="right">
+            <FadeInSection direction="right" className="min-w-0">
               {submitted ? (
                 <div className="bg-white p-12 rounded-xl shadow-2xl text-center h-full flex flex-col items-center justify-center">
                   <div className="w-20 h-20 mx-auto mb-8 bg-gold/20 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(184,134,11,0.2)]">
@@ -136,22 +136,22 @@ export default function Contact() {
                   <h3 className="font-display text-3xl font-bold text-navy mb-8">Send a Message</h3>
                   <div className="space-y-6">
                     <div>
-                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-2">Full Name</label>
+                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-3">Full Name</label>
                       <input name="name" type="text" className={inputClass('name')} placeholder="Your name" />
                       {errors.name && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.name}</p>}
                     </div>
                     <div>
-                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-2">Email Address</label>
+                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-3">Email Address</label>
                       <input name="email" type="email" className={inputClass('email')} placeholder="you@email.com" />
                       {errors.email && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.email}</p>}
                     </div>
                     <div>
-                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-2">Subject</label>
+                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-3">Subject</label>
                       <input name="subject" type="text" className={inputClass('subject')} placeholder="How can we help?" />
                       {errors.subject && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.subject}</p>}
                     </div>
                     <div>
-                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-2">Message</label>
+                      <label className="block font-accent uppercase tracking-widest text-xs font-bold text-navy mb-3">Message</label>
                       <textarea name="message" rows={5} className={inputClass('message')} placeholder="Your message..." />
                       {errors.message && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.message}</p>}
                     </div>

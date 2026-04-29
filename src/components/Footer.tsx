@@ -39,7 +39,7 @@ export default function Footer() {
                 { to: '/contact', label: 'Contact' },
               ].map((link) => (
                 <li key={link.to}>
-                  <Link to={link.to} className="text-white/70 hover:text-gold text-sm transition-colors">
+                  <Link to={link.to} className="text-white/70 hover:text-gold text-sm underline underline-offset-4 transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -54,7 +54,7 @@ export default function Footer() {
             <div className="mt-6">
               <p className="text-white/70 text-sm">
                 <strong className="text-white">Email:</strong>{' '}
-                <a href="mailto:info@jakefrugejrgrant.com" className="hover:text-gold transition-colors">
+                <a href="mailto:info@jakefrugejrgrant.com" className="hover:text-gold transition-colors underline underline-offset-4">
                   info@jakefrugejrgrant.com
                 </a>
               </p>
@@ -69,7 +69,7 @@ export default function Footer() {
           </p>
           <p className="text-white/50 text-xs">
             A philanthropic initiative by{' '}
-            <a href="https://www.jakefrugejr.com" target="_blank" rel="noopener noreferrer" className="text-gold/70 hover:text-gold transition-colors">
+            <a href="https://www.jakefrugejr.com" target="_blank" rel="noopener noreferrer" className="text-gold/70 hover:text-gold transition-colors underline underline-offset-2">
               {SUBJECT_NAME}
             </a>
             , CEO of JFJ Holdings.

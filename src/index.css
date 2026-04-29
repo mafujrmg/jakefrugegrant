@@ -49,12 +49,13 @@ h1, h2, h3, h4, h5, h6 {
 p a,
 li a,
 .standard-link {
-  color: oklch(0.73 0.12 85);
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
+  color: oklch(0.65 0.14 65); /* slightly darker gold for better contrast */
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  text-decoration-color: currentColor !important;
+  text-decoration-thickness: 2px !important;
   text-underline-offset: 3px;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, color 0.2s ease;
 }
 
 .wp-content a:hover,
@@ -62,11 +63,11 @@ p a:hover,
 li a:hover,
 .standard-link:hover {
   opacity: 0.8;
+  color: oklch(0.55 0.14 65);
 }
 
 /* Reset for navigation, logos, and buttons to prevent global link styles from applying */
 nav a,
-footer a,
 a.font-accent,
 a.bg-gold,
 a.bg-navy,

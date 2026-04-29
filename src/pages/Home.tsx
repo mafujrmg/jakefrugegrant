@@ -47,16 +47,16 @@ export default function Home() {
             </p>
           </FadeInSection>
           <FadeInSection delay={0.6}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4">
               <Link
                 to="/apply"
-                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-wider px-8 py-3 text-sm font-semibold transition-colors duration-300"
+                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-wider px-8 py-3.5 text-sm font-semibold transition-colors duration-300"
               >
                 Apply for the Grant
               </Link>
               <Link
                 to="/eligibility"
-                className="border border-white/40 hover:border-gold text-white hover:text-gold font-accent uppercase tracking-wider px-8 py-3 text-sm transition-colors duration-300"
+                className="border border-white/40 hover:border-gold text-white hover:text-gold font-accent uppercase tracking-wider px-8 py-3.5 text-sm transition-colors duration-300"
               >
                 View Eligibility
               </Link>
@@ -98,8 +98,8 @@ export default function Home() {
                     ['Winner Announced', GRANT_WINNER_DATE],
                   ].map(([label, value], i) => (
                     <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-cream-dark'}>
-                      <td className="px-8 py-4 font-accent uppercase tracking-wider text-xs md:text-sm text-navy font-bold border-b border-navy/5">{label}</td>
-                      <td className="px-8 py-4 text-navy/80 text-sm md:text-base border-b border-navy/5">{value}</td>
+                      <td className="p-4 sm:px-8 sm:py-5 font-accent uppercase tracking-wider text-xs md:text-sm text-navy font-bold border-b border-navy/5 w-1/3">{label}</td>
+                      <td className="p-4 sm:px-8 sm:py-5 text-navy/80 text-sm md:text-base border-b border-navy/5">{value}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -180,8 +180,8 @@ export default function Home() {
                 desc: `Applications must be received by ${GRANT_DEADLINE}. The ${SUBJECT_NAME} Grant recipient will be announced on ${GRANT_WINNER_DATE}.`,
               },
             ].map((item, i) => (
-              <FadeInSection key={i} delay={i * 0.15}>
-                <div className="bg-white p-10 rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-gold h-full">
+              <FadeInSection key={i} delay={i * 0.15} className="h-full">
+                <div className="bg-white p-8 lg:p-10 rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-gold h-full flex flex-col items-center justify-start">
                   <span className="font-accent text-5xl font-bold text-gold/20 block mb-6">{item.step}</span>
                   <h3 className="font-display text-2xl font-bold text-navy mb-4">{item.title}</h3>
                   <p className="text-navy/70 leading-relaxed">{item.desc}</p>
