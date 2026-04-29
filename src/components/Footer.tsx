@@ -7,7 +7,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-navy text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div className="max-w-7xl mx-auto px-8 sm:px-12 py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1: Logo + Bio */}
           <div>
