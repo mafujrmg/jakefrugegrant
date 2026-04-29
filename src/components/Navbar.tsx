@@ -18,7 +18,7 @@ export default function Navbar() {
 
   return (
     <nav className="bg-navy sticky top-0 z-50 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Text-only logo */}
           <Link to="/" className="flex items-center gap-1 shrink-0 no-underline" onClick={() => setOpen(false)}>

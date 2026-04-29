@@ -50,13 +50,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4">
               <Link
                 to="/apply"
-                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-wider px-8 py-3.5 text-sm font-semibold transition-colors duration-300"
+                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-wider px-8 py-3.5 text-sm font-semibold transition-colors duration-300 w-full sm:w-auto text-center"
               >
                 Apply for the Grant
               </Link>
               <Link
                 to="/eligibility"
-                className="border border-white/40 hover:border-gold text-white hover:text-gold font-accent uppercase tracking-wider px-8 py-3.5 text-sm transition-colors duration-300"
+                className="border-2 border-white/80 hover:border-gold text-white hover:text-gold font-accent uppercase tracking-wider px-8 py-3.5 text-sm transition-colors duration-300 bg-white/10 sm:bg-transparent shadow-lg sm:shadow-none w-full sm:w-auto"
               >
                 View Eligibility
               </Link>
@@ -98,8 +98,8 @@ export default function Home() {
                     ['Winner Announced', GRANT_WINNER_DATE],
                   ].map(([label, value], i) => (
                     <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-cream-dark'}>
-                      <td className="p-4 sm:px-8 sm:py-5 font-accent uppercase tracking-wider text-xs md:text-sm text-navy font-bold border-b border-navy/5 w-1/3">{label}</td>
-                      <td className="p-4 sm:px-8 sm:py-5 text-navy/80 text-sm md:text-base border-b border-navy/5">{value}</td>
+                      <td className="p-5 sm:px-8 sm:py-5 font-accent uppercase tracking-wider text-[10px] md:text-sm text-navy font-bold border-b border-navy/5 w-1/3 leading-tight">{label}</td>
+                      <td className="p-5 sm:px-8 sm:py-5 text-navy/80 text-xs sm:text-sm md:text-base border-b border-navy/5">{value}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -110,9 +110,9 @@ export default function Home() {
       </section>
 
       {/* FOUNDER INTRO */}
-      <section className="py-20 md:py-28 bg-navy">
+      <section className="py-24 md:py-32 bg-navy relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20 items-center">
             <FadeInSection direction="left">
               <div className="relative">
                 <div className="absolute -inset-4 border border-gold/30 rounded-lg translate-x-2 translate-y-2 hidden md:block" />
@@ -181,8 +181,8 @@ export default function Home() {
               },
             ].map((item, i) => (
               <FadeInSection key={i} delay={i * 0.15} className="h-full">
-                <div className="bg-white p-8 lg:p-10 rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-gold h-full flex flex-col items-center justify-start">
-                  <span className="font-accent text-5xl font-bold text-gold/20 block mb-6">{item.step}</span>
+                <div className="bg-white p-8 lg:p-10 rounded-lg shadow-md text-center hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-gold h-full flex flex-col items-center justify-start relative overflow-hidden">
+                  <span className="font-accent text-5xl font-bold text-gold/5 block mb-6">{item.step}</span>
                   <h3 className="font-display text-2xl font-bold text-navy mb-4">{item.title}</h3>
                   <p className="text-navy/70 leading-relaxed">{item.desc}</p>
                 </div>
@@ -246,10 +246,11 @@ export default function Home() {
       </section>
 
       {/* CTA BANNER */}
-      <section className="py-20 md:py-28 bg-gold">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="bg-gold">
+        <div className="max-w-4xl mx-auto px-4 py-20 md:py-28 text-center">
           <FadeInSection>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-navy mb-6">
+            <DiamondDivider className="!my-0 mb-12 opacity-40 invert" />
+            <h2 className="font-display text-4xl md:text-6xl font-bold text-navy mb-6">
               Ready to Claim Your {SUBJECT_NAME} Grant?
             </h2>
             <p className="text-navy/90 text-xl mb-10 max-w-2xl mx-auto leading-relaxed">

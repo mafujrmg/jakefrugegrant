@@ -129,7 +129,7 @@ export default function BlogArticle() {
               </div>
               <Link
                 to="/blog"
-                className="inline-flex items-center gap-2 font-accent uppercase tracking-widest text-xs font-bold text-navy hover:text-gold transition-all group"
+                className="inline-flex items-center gap-2 font-accent uppercase tracking-widest text-xs font-bold text-navy underline underline-offset-4 hover:text-gold transition-all group"
               >
                 <span className="group-hover:-translate-x-1 transition-transform">&larr;</span> Back to All Articles
               </Link>
