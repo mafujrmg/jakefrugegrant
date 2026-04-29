@@ -21,7 +21,7 @@ export default function About() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <FadeInSection direction="left">
               <div className="relative inline-block">
-                <div className="absolute -inset-4 border-2 border-gold/20 rounded-full animate-pulse" />
+                <div className="absolute -inset-4 border-2 border-gold/20 rounded-lg" />
                 <img
                   src={IMAGES.jakeWhiteHoodie}
                   alt={`${SUBJECT_NAME} — entrepreneur, CEO of JFJ Holdings, and founder of the ${SUBJECT_NAME} Grant`}

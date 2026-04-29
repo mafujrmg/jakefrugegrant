@@ -44,21 +44,46 @@ h1, h2, h3, h4, h5, h6 {
 .wp-content a { color: oklch(0.73 0.12 85); text-decoration: underline; font-weight: 700; }
 .wp-content img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1.5rem 0; }
 
-/* Global Link Styles */
-a:not([class*="bg-"]):not([class*="border-"]):not([class*="font-accent"]) {
+/* Global Link Styles - Targeted for content visibility */
+.wp-content a,
+p a,
+li a,
+.standard-link {
   color: oklch(0.73 0.12 85);
   font-weight: 700;
   text-decoration: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
   transition: opacity 0.2s ease;
 }
 
-a:not([class*="bg-"]):not([class*="border-"]):not([class*="font-accent"]):hover {
+.wp-content a:hover,
+p a:hover,
+li a:hover,
+.standard-link:hover {
   opacity: 0.8;
 }
 
-/* Ensure buttons and specific nav links aren't affected by global underline/bold */
-.bg-gold, .bg-navy, .border-gold, .border-white, .font-accent {
+/* Reset for navigation, logos, and buttons to prevent global link styles from applying */
+nav a,
+footer a,
+a.font-accent,
+a.bg-gold,
+a.bg-navy,
+a.border-gold,
+a.border-white,
+a[class*="flex"],
+a[class*="shadow"],
+a[class*="grid"],
+.no-underline,
+.no-style-link {
+  text-decoration: none !important;
+  font-weight: inherit;
+  color: inherit;
+}
+
+a.font-accent:hover,
+a.bg-gold:hover,
+a.bg-navy:hover {
   text-decoration: none !important;
 }

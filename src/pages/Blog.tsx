@@ -70,10 +70,11 @@ export default function Blog() {
           ) : (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-                {posts.map((post, i) => (
-                  <FadeInSection key={post.id} delay={i * 0.1}>
-                    <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                      {post.featuredImage && (
+              {posts.map((post, i) => (
+                <FadeInSection key={post.id} delay={i * 0.1}>
+                  <Link to={`/blog/${post.slug}`} className="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 no-underline">
+                    {post.featuredImage && (
+
                         <div className="aspect-[16/10] overflow-hidden">
                           <img
                             src={post.featuredImage}

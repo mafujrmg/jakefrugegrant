@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Column 1: Logo + Bio */}
           <div>
-            <Link to="/" className="inline-block mb-4">
+            <Link to="/" className="inline-block mb-4 no-underline">
               <span className="font-display text-2xl italic font-bold text-white">
                 Jake Fruge{' '}
                 <span className="text-gold">Jr</span>
