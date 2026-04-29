@@ -17,8 +17,8 @@ export default function Navbar() {
   const { pathname } = useLocation();
 
   return (
-    <nav className="bg-navy sticky top-0 z-50 shadow-lg border-b border-white/5">
-      <div className="max-w-7xl mx-auto px-8 sm:px-10 lg:px-12 py-4">
+    <nav className="bg-[#0a0f1d] sticky top-0 z-50 shadow-2xl border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-12">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Text-only logo */}
           <Link to="/" className="flex items-center gap-1 shrink-0 no-underline" onClick={() => setOpen(false)}>

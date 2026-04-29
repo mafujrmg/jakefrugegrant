@@ -15,15 +15,15 @@ export default function Eligibility() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="bg-navy py-24 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 text-center">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.2em] text-gold text-sm mb-4">Grant Details</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
-              {SUBJECT_NAME} Grant Eligibility & Details
+            <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Grant Details</p>
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+              Grant Eligibility & Details
             </h1>
-            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              The {SUBJECT_NAME} Grant is intentionally accessible. {SUBJECT_NAME} designed this grant to remove barriers, not create them. Here is everything you need to know.
+            <p className="text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
+              The {SUBJECT_NAME} Grant is intentionally accessible. Designed to remove barriers, not create them.
             </p>
           </FadeInSection>
         </div>
@@ -119,8 +119,8 @@ export default function Eligibility() {
                     ['Number of Recipients', '1 per year'],
                   ].map(([criteria, req], i) => (
                     <tr key={i} className={i % 2 === 0 ? 'bg-cream/30' : 'bg-white'}>
-                      <td className="px-8 py-4 font-bold text-navy text-sm uppercase tracking-tight border-b border-navy/5">{criteria}</td>
-                      <td className="px-8 py-4 text-navy/80 text-base border-b border-navy/5">{req}</td>
+                      <td className="px-8 py-6 sm:px-12 sm:py-8 font-bold text-navy text-[10px] md:text-xs uppercase tracking-widest border-b border-navy/5 bg-navy/5">{criteria}</td>
+                      <td className="px-8 py-6 sm:px-12 sm:py-8 text-navy/80 text-sm md:text-lg border-b border-navy/5 font-medium">{req}</td>
                     </tr>
                   ))}
                 </tbody>

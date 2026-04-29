@@ -44,14 +44,14 @@ export default function FAQ() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="bg-navy py-24 md:py-32">
+        <div className="max-w-5xl mx-auto px-6 text-center">
           <FadeInSection>
             <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Support Center</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               Frequently Asked Questions
             </h1>
-            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
               Everything you need to know about the {SUBJECT_NAME} Grant, our mission, and the application process.
             </p>
           </FadeInSection>
@@ -59,8 +59,8 @@ export default function FAQ() {
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-20 md:py-28 bg-cream">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 md:py-36 bg-cream">
+        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12">
           <FadeInSection>
             <div className="text-center mb-16">
               <DiamondDivider />

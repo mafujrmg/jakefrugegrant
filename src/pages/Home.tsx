@@ -50,13 +50,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mt-4">
               <Link
                 to="/apply"
-                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-widest px-10 py-5 text-sm font-bold transition-all duration-300 w-full sm:w-auto text-center shadow-[0_10px_20px_rgba(184,134,11,0.2)] hover:-translate-y-1"
+                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-widest px-10 py-5 text-sm font-bold transition-all duration-300 w-full sm:w-auto text-center shadow-[0_10px_30px_rgba(184,134,11,0.3)] hover:-translate-y-1"
               >
                 Apply for the Grant
               </Link>
               <Link
                 to="/eligibility"
-                className="border-2 border-white/60 hover:border-gold text-white hover:text-gold font-accent uppercase tracking-widest px-10 py-5 text-sm font-bold transition-all duration-300 bg-white/5 sm:bg-transparent w-full sm:w-auto hover:-translate-y-1"
+                className="border-2 border-white text-white hover:bg-white hover:text-navy font-accent uppercase tracking-widest px-10 py-5 text-sm font-bold transition-all duration-300 bg-navy/20 sm:bg-transparent w-full sm:w-auto hover:-translate-y-1 shadow-xl"
               >
                 View Eligibility
               </Link>
@@ -98,8 +98,8 @@ export default function Home() {
                     ['Winner Announced', GRANT_WINNER_DATE],
                   ].map(([label, value], i) => (
                     <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-cream-dark/40'}>
-                      <td className="px-6 py-6 sm:px-10 sm:py-7 font-accent uppercase tracking-[0.15em] text-[10px] md:text-xs text-navy font-bold border-b border-navy/5 w-1/3 leading-tight bg-navy/5">{label}</td>
-                      <td className="px-6 py-6 sm:px-10 sm:py-7 text-navy/80 text-sm md:text-lg border-b border-navy/5 font-medium">{value}</td>
+                      <td className="px-8 py-6 sm:px-12 sm:py-8 font-accent uppercase tracking-[0.15em] text-[10px] md:text-xs text-navy font-bold border-b border-navy/5 w-1/3 leading-tight bg-navy/5">{label}</td>
+                      <td className="px-8 py-6 sm:px-12 sm:py-8 text-navy/80 text-sm md:text-lg border-b border-navy/5 font-medium">{value}</td>
                     </tr>
                   ))}
                 </tbody>

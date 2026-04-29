@@ -78,25 +78,25 @@ export default function Apply() {
       />
 
       {/* Hero */}
-      <section className="relative py-16 md:py-20 overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden flex items-center justify-center min-h-[40vh]">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMAGES.applicationDesk})` }} />
         <div className="absolute inset-0 bg-navy/85" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Official Application</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
-              The {SUBJECT_NAME} Grant Application
+            <p className="font-accent uppercase tracking-[0.4em] text-gold text-sm mb-4">Official Application</p>
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+              Apply Now
             </h1>
-            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Complete the form below to submit your application for the 2026 cycle. The deadline is {GRANT_DEADLINE}. All fields are required.
+            <p className="text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
+              Submit your application for the 2026 cycle. Deadline: {GRANT_DEADLINE}.
             </p>
           </FadeInSection>
         </div>
       </section>
 
       {/* Form */}
-      <section className="py-16 md:py-20 bg-cream relative z-20 mt-4 md:mt-8">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-24 md:py-36 bg-cream relative z-20">
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-12">
           <form onSubmit={handleSubmit} noValidate className="bg-white p-8 md:p-12 rounded-xl shadow-2xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* First Name */}

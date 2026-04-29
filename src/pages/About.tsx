@@ -35,9 +35,9 @@ export default function About() {
               <h1 className="font-display text-4xl md:text-7xl font-bold text-white mb-6">
                 {SUBJECT_NAME}
               </h1>
-              <div className="flex flex-wrap gap-4 mb-12">
+              <div className="flex flex-wrap gap-3 mb-10">
                 {['Entrepreneur', 'CEO of JFJ Holdings', 'Forbes Council'].map((tag) => (
-                  <span key={tag} className="px-4 py-2 bg-white/5 border border-white/10 text-white/60 font-accent uppercase tracking-widest text-[10px] rounded-full inline-block">
+                  <span key={tag} className="px-5 py-2.5 bg-white/10 border border-white/20 text-white font-accent uppercase tracking-[0.15em] text-[10px] md:text-xs rounded-full inline-block backdrop-blur-sm">
                     {tag}
                   </span>
                 ))}
@@ -123,8 +123,8 @@ export default function About() {
                     ['Recognition', 'Forbes Council'],
                   ].map(([achievement, detail], i) => (
                     <tr key={i} className={i % 2 === 0 ? 'bg-cream/30' : 'bg-white'}>
-                      <td className="px-8 py-4 font-bold text-navy text-xs md:text-sm uppercase tracking-widest border-b border-navy/5">{achievement}</td>
-                      <td className="px-8 py-4 text-navy/80 text-sm md:text-base border-b border-navy/5">{detail}</td>
+                      <td className="px-8 py-6 font-bold text-navy text-[10px] md:text-xs uppercase tracking-widest border-b border-navy/5 bg-navy/5">{achievement}</td>
+                      <td className="px-8 py-6 text-navy/80 text-sm md:text-lg border-b border-navy/5 font-medium">{detail}</td>
                     </tr>
                   ))}
                 </tbody>

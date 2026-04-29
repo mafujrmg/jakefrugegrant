@@ -35,24 +35,24 @@ export default function Contact() {
       />
 
       {/* Hero */}
-      <section className="relative py-16 md:py-20 overflow-hidden">
+      <section className="relative py-24 md:py-32 overflow-hidden flex items-center justify-center min-h-[40vh]">
         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMAGES.contactHero})` }} />
         <div className="absolute inset-0 bg-navy/85" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Support</p>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-6">
+            <p className="font-accent uppercase tracking-[0.4em] text-gold text-sm mb-4">Support</p>
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               Get in Touch
             </h1>
-            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-              Have a question about the {SUBJECT_NAME} Grant? Our team is here to assist you throughout the application process.
+            <p className="text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
+              Have a question about the {SUBJECT_NAME} Grant? Our team is here to assist you.
             </p>
           </FadeInSection>
         </div>
       </section>
 
       {/* Contact Content */}
-      <section className="py-20 md:py-28 bg-cream">
+      <section className="py-24 md:py-36 bg-cream">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24">
             {/* Left: Info */}
