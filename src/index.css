@@ -107,3 +107,56 @@ a[class*="grid"],
   text-decoration: none !important;
   border-bottom: none !important;
 }
+
+/* =========================================================
+   Layout Utilities — always available, bypass Tailwind scan
+   ========================================================= */
+
+/* Inner hero content padding — clears fixed navbar */
+.hero-inner {
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .hero-inner {
+    padding-top: 10rem;
+    padding-bottom: 6rem;
+  }
+}
+
+/* Centered page section container */
+.section-container {
+  max-width: 72rem; /* max-w-6xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 640px) {
+  .section-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  .section-container {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.section-container-narrow {
+  max-width: 64rem; /* max-w-5xl */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 640px) {
+  .section-container-narrow {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}

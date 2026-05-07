@@ -18,38 +18,41 @@ export default function FadeInSection({ children, className = '', delay = 0, dir
     const el = ref.current;
     if (!el) return;
 
-    const fromVars: gsap.TweenVars = { opacity: 0, duration: 0.8, delay };
-    const toVars: gsap.TweenVars = { opacity: 1, duration: 0.8, delay };
+    const fromVars: gsap.TweenVars = { opacity: 0 };
+    const toVars: gsap.TweenVars = { opacity: 1, duration: 0.7, ease: 'power2.out', delay };
 
     switch (direction) {
       case 'up':
-        fromVars.y = 40;
+        fromVars.y = 30;
         toVars.y = 0;
         break;
       case 'down':
-        fromVars.y = -40;
+        fromVars.y = -30;
         toVars.y = 0;
         break;
       case 'left':
-        fromVars.x = 40;
+        fromVars.x = 30;
         toVars.x = 0;
         break;
       case 'right':
-        fromVars.x = -40;
+        fromVars.x = -30;
         toVars.x = 0;
         break;
     }
 
-    gsap.fromTo(el, fromVars, {
+    const anim = gsap.fromTo(el, fromVars, {
       ...toVars,
       scrollTrigger: {
         trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
+        // 'top bottom' = trigger fires the moment top of element reaches bottom of viewport
+        // This ensures above-fold content animates on page load, not on scroll
+        start: 'top bottom',
+        once: true,
       },
     });
 
     return () => {
+      anim.kill();
       ScrollTrigger.getAll().forEach((t) => {
         if (t.trigger === el) t.kill();
       });

@@ -44,9 +44,9 @@ export default function FAQ() {
       />
 
       {/* Hero */}
-      <section className="bg-base pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
+      <section className="bg-base relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
-        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div className="section-container-narrow text-center relative z-10 hero-inner">
           <FadeInSection>
             <p className="font-accent uppercase tracking-widest text-secondary text-sm mb-4">Support Center</p>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-text-main mb-8 leading-tight tracking-tight">

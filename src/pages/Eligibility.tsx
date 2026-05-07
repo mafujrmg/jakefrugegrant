@@ -15,9 +15,9 @@ export default function Eligibility() {
       />
 
       {/* Hero */}
-      <section className="bg-base pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+      <section className="bg-base relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--color-primary)_0%,_transparent_50%)] opacity-10 pointer-events-none" />
-        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
+        <div className="section-container-narrow text-center relative z-10 hero-inner">
           <FadeInSection>
             <p className="font-accent uppercase tracking-widest text-secondary text-sm mb-4">Grant Details</p>
             <h1 className="font-display text-5xl md:text-7xl font-bold text-text-main mb-8 leading-tight tracking-tight">

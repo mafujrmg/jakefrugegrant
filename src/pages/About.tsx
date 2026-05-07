@@ -16,10 +16,10 @@ export default function About() {
       />
 
       {/* Hero */}
-      <section className="bg-base pt-32 pb-16 md:pt-40 md:pb-24 relative overflow-hidden">
+      <section className="bg-base relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-primary/10 to-transparent pointer-events-none" />
         <div className="absolute top-20 right-20 w-96 h-96 bg-secondary/10 blur-[100px] rounded-full pointer-events-none" />
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="section-container relative z-10 hero-inner">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center">
             <FadeInSection direction="left">
               <div className="relative group perspective">
