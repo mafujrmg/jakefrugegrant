@@ -38,7 +38,7 @@ export default function Apply() {
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-3 border-2 ${errors[field] ? 'border-red-500' : 'border-navy/10'} rounded-md focus:outline-none focus:border-gold bg-white text-navy text-sm md:text-base transition-all duration-200`;
+    `w-full px-4 py-3 border border-white/10 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface text-text-main text-sm md:text-base transition-all duration-200 placeholder:text-text-muted/50 ${errors[field] ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`;
 
   if (submitted) {
     return (
@@ -48,18 +48,19 @@ export default function Apply() {
           description={`Your application for the ${SUBJECT_NAME} Grant has been submitted successfully.`}
           canonical="/apply"
         />
-        <section className="min-h-[70vh] flex items-center justify-center bg-cream py-20">
-          <div className="max-w-lg mx-auto px-4 text-center">
-            <div className="w-20 h-20 mx-auto mb-8 bg-gold/20 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(184,134,11,0.2)]">
-              <svg className="text-gold" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+        <section className="min-h-screen flex items-center justify-center bg-base py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_40%)] opacity-10 pointer-events-none" />
+          <div className="max-w-lg mx-auto px-4 text-center relative z-10">
+            <div className="w-24 h-24 mx-auto mb-8 bg-primary/20 rounded-full flex items-center justify-center shadow-[0_0_40px_rgba(139,92,246,0.3)] border border-primary/30">
+              <svg className="text-primary-light" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             </div>
-            <h1 className="font-display text-4xl font-bold text-navy mb-6">Application Received</h1>
-            <p className="text-navy/70 text-lg leading-relaxed mb-8">
+            <h1 className="font-display text-4xl md:text-5xl font-bold text-text-main mb-6 tracking-tight">Application Received</h1>
+            <p className="text-text-muted text-lg leading-relaxed mb-10 font-light">
               Thank you for applying for the {SUBJECT_NAME} Grant. Your application has been submitted successfully. The {SUBJECT_NAME} Grant recipient will be announced on August 30, 2026. We wish you the best.
             </p>
-            <Link to="/" className="inline-block bg-navy text-white px-8 py-3 font-accent uppercase tracking-widest text-sm hover:bg-navy-light transition-colors">
+            <Link to="/" className="inline-block bg-primary text-white px-10 py-4 font-accent uppercase tracking-widest text-sm hover:bg-primary-light transition-all rounded-lg shadow-lg hover:shadow-primary/20 hover:-translate-y-1">
               Return Home
             </Link>
           </div>
@@ -78,72 +79,75 @@ export default function Apply() {
       />
 
       {/* Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden flex items-center justify-center min-h-[40vh]">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${IMAGES.applicationDesk})` }} />
-        <div className="absolute inset-0 bg-navy/85" />
+      <section className="relative pt-32 pb-24 md:pt-40 md:pb-32 overflow-hidden flex items-center justify-center min-h-[50vh]">
+        <div className="absolute inset-0 bg-cover bg-center mix-blend-luminosity opacity-30" style={{ backgroundImage: `url(${IMAGES.applicationDesk})` }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-base via-base/90 to-base" />
         <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.4em] text-gold text-sm mb-4">Official Application</p>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            <p className="font-accent uppercase tracking-widest text-secondary text-sm mb-4">Official Application</p>
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-text-main mb-8 leading-tight tracking-tight">
               Apply Now
             </h1>
-            <p className="text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
-              Submit your application for the 2026 cycle. Deadline: {GRANT_DEADLINE}.
+            <p className="text-text-muted text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
+              Submit your application for the 2026 cycle. Deadline: <strong className="text-text-main font-medium">{GRANT_DEADLINE}</strong>.
             </p>
           </FadeInSection>
         </div>
       </section>
 
       {/* Form */}
-      <section className="py-24 md:py-36 bg-cream relative z-20">
-        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-12">
-          <form onSubmit={handleSubmit} noValidate className="bg-white p-8 md:p-12 rounded-xl shadow-2xl">
+      <section className="py-24 md:py-36 bg-base relative z-20">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <form onSubmit={handleSubmit} noValidate className="glass-card p-8 md:p-14 rounded-3xl shadow-2xl border border-white/10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* First Name */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">First Name</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">First Name</label>
                 <input name="firstName" type="text" className={inputClass('firstName')} placeholder="First name" />
                 {errors.firstName && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.firstName}</p>}
               </div>
               {/* Last Name */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Last Name</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Last Name</label>
                 <input name="lastName" type="text" className={inputClass('lastName')} placeholder="Last name" />
                 {errors.lastName && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.lastName}</p>}
               </div>
               {/* Email */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Email Address</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Email Address</label>
                 <input name="email" type="email" className={inputClass('email')} placeholder="you@email.com" />
                 {errors.email && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.email}</p>}
               </div>
               {/* Phone */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Phone Number</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Phone Number</label>
                 <input name="phone" type="tel" className={inputClass('phone')} placeholder="(555) 123-4567" />
                 {errors.phone && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.phone}</p>}
               </div>
               {/* Date of Birth */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Date of Birth</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Date of Birth</label>
                 <input name="dob" type="date" className={inputClass('dob')} />
                 {errors.dob && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.dob}</p>}
               </div>
               {/* Street Address */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Street Address</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Street Address</label>
                 <input name="street" type="text" className={inputClass('street')} placeholder="123 Main St" />
                 {errors.street && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.street}</p>}
               </div>
               {/* City */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">City</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">City</label>
                 <input name="city" type="text" className={inputClass('city')} placeholder="City" />
                 {errors.city && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.city}</p>}
               </div>
               {/* State */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">State</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">State</label>
                 <select name="state" className={inputClass('state')}>
                   <option value="">Select state</option>
                   {US_STATES.map((s) => <option key={s} value={s}>{s}</option>)}
@@ -152,19 +156,19 @@ export default function Apply() {
               </div>
               {/* ZIP */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">ZIP Code</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">ZIP Code</label>
                 <input name="zip" type="text" className={inputClass('zip')} placeholder="70501" />
                 {errors.zip && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.zip}</p>}
               </div>
               {/* University */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">University / College Name</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">University / College Name</label>
                 <input name="university" type="text" className={inputClass('university')} placeholder="University name" />
                 {errors.university && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.university}</p>}
               </div>
               {/* Program Level */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Program Level</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Program Level</label>
                 <select name="programLevel" className={inputClass('programLevel')}>
                   <option value="">Select level</option>
                   <option value="Undergraduate">Undergraduate</option>
@@ -175,22 +179,22 @@ export default function Apply() {
               </div>
               {/* Major */}
               <div>
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Field of Study / Major</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Field of Study / Major</label>
                 <input name="major" type="text" className={inputClass('major')} placeholder="e.g., Business Administration" />
                 {errors.major && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.major}</p>}
               </div>
               {/* Expected Graduation */}
               <div className="md:col-span-2">
-                <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">Expected Graduation Date</label>
+                <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3">Expected Graduation Date</label>
                 <input name="gradDate" type="date" className={inputClass('gradDate')} />
                 {errors.gradDate && <p className="text-red-500 text-xs mt-2 font-semibold">{errors.gradDate}</p>}
               </div>
             </div>
 
             {/* Brief Statement */}
-            <div className="mt-8">
-              <label className="block font-accent uppercase tracking-widest text-[10px] md:text-xs font-bold text-navy mb-3">
-                Brief Statement — Why do you deserve the {SUBJECT_NAME} Grant? (500 characters max)
+            <div className="mt-10">
+              <label className="block font-accent uppercase tracking-widest text-xs font-bold text-text-main mb-3 flex items-center gap-2">
+                Brief Statement <span className="text-text-muted font-normal lowercase">(Why do you deserve the {SUBJECT_NAME} Grant?)</span>
               </label>
               <textarea
                 name="statement"
@@ -199,24 +203,24 @@ export default function Apply() {
                 className={inputClass('statement')}
                 placeholder="Tell us why you deserve this grant..."
               />
-              <div className="flex justify-between mt-2">
+              <div className="flex justify-between mt-3">
                 {errors.statement ? (
                   <p className="text-red-500 text-xs font-semibold">{errors.statement}</p>
                 ) : (
                   <span />
                 )}
-                <span className="text-[10px] text-navy/40 font-accent uppercase tracking-widest">Max 500 characters</span>
+                <span className="text-[10px] text-text-muted font-accent uppercase tracking-widest">Max 500 characters</span>
               </div>
             </div>
 
-            <div className="mt-12 text-center">
+            <div className="mt-12 text-center border-t border-white/5 pt-10">
               <button
                 type="submit"
-                className="w-full md:w-auto bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-[0.2em] px-16 py-4 text-sm font-bold shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="w-full md:w-auto bg-primary hover:bg-primary-light text-white font-accent uppercase tracking-widest px-16 py-4 text-sm font-bold shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-lg hover:shadow-primary/30"
               >
                 Submit Application
               </button>
-              <p className="text-navy/40 text-[10px] font-accent uppercase tracking-[0.1em] mt-4">
+              <p className="text-text-muted/50 text-[10px] font-accent uppercase tracking-widest mt-6">
                 By submitting, you confirm that all information provided is accurate and you agree to our terms.
               </p>
             </div>

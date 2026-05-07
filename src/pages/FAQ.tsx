@@ -44,14 +44,15 @@ export default function FAQ() {
       />
 
       {/* Hero */}
-      <section className="bg-navy py-24 md:py-32">
-        <div className="max-w-5xl mx-auto px-6 text-center">
+      <section className="bg-base pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
+        <div className="max-w-5xl mx-auto px-6 text-center relative z-10">
           <FadeInSection>
-            <p className="font-accent uppercase tracking-[0.3em] text-gold text-sm mb-4">Support Center</p>
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            <p className="font-accent uppercase tracking-widest text-secondary text-sm mb-4">Support Center</p>
+            <h1 className="font-display text-5xl md:text-7xl font-bold text-text-main mb-8 leading-tight tracking-tight">
               Frequently Asked Questions
             </h1>
-            <p className="text-white/80 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
+            <p className="text-text-muted text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed font-light">
               Everything you need to know about the {SUBJECT_NAME} Grant, our mission, and the application process.
             </p>
           </FadeInSection>
@@ -59,32 +60,35 @@ export default function FAQ() {
       </section>
 
       {/* FAQ Accordion */}
-      <section className="py-24 md:py-36 bg-cream">
-        <div className="max-w-5xl mx-auto px-6 sm:px-10 lg:px-12">
+      <section className="py-24 md:py-36 bg-surface relative">
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-6 sm:px-10 lg:px-12 relative z-10">
           <FadeInSection>
             <div className="text-center mb-16">
               <DiamondDivider />
             </div>
           </FadeInSection>
 
-          <div className="space-y-4 max-w-3xl mx-auto">
+          <div className="space-y-6 max-w-3xl mx-auto">
             {FAQS.map((faq, i) => (
               <FadeInSection key={i} delay={i * 0.05}>
-                <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-navy/10 relative z-10">
+                <div className={`glass-card rounded-2xl overflow-hidden border transition-all duration-300 ${openIndex === i ? 'border-primary/50 shadow-[0_0_30px_rgba(139,92,246,0.15)] bg-white/[0.03]' : 'border-white/5 hover:border-white/20'}`}>
                   <button
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
-                    className="w-full px-6 py-5 md:px-8 md:py-6 flex items-center justify-between text-left group"
+                    className="w-full px-6 py-6 md:px-8 md:py-8 flex items-center justify-between text-left group"
                   >
-                    <span className={`font-display text-lg md:text-xl font-bold transition-colors duration-200 ${openIndex === i ? 'text-gold' : 'text-navy group-hover:text-gold'}`}>
+                    <span className={`font-display text-lg md:text-xl font-bold transition-colors duration-200 pr-8 ${openIndex === i ? 'text-primary' : 'text-text-main group-hover:text-primary-light'}`}>
                       {faq.q}
                     </span>
-                    <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${openIndex === i ? 'bg-gold border-gold text-navy rotate-45' : 'border-gold/30 text-gold'}`}>
-                      <span className="text-xl font-bold">+</span>
+                    <div className={`shrink-0 w-10 h-10 rounded-full border flex items-center justify-center transition-all duration-300 ${openIndex === i ? 'bg-primary border-primary text-white rotate-45 shadow-[0_0_15px_rgba(139,92,246,0.5)]' : 'border-white/10 text-white/50 group-hover:text-primary-light group-hover:border-primary/50'}`}>
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="transition-transform duration-300">
+                        <path d="M7 1V13M1 7H13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
                     </div>
                   </button>
-                  <div className={`transition-all duration-300 ease-in-out ${openIndex === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
-                    <div className="px-6 pb-6 md:px-8 md:pb-8 border-t border-navy/5 mt-2 pt-4">
-                      <p className="text-navy/70 leading-relaxed text-base md:text-lg">{faq.a}</p>
+                  <div className={`transition-all duration-500 ease-in-out ${openIndex === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                    <div className="px-6 pb-6 md:px-8 md:pb-8 pt-2">
+                      <p className="text-text-muted leading-relaxed text-base md:text-lg font-light pl-4 border-l-2 border-primary/30">{faq.a}</p>
                     </div>
                   </div>
                 </div>
