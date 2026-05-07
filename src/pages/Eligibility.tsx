@@ -37,7 +37,7 @@ export default function Eligibility() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
               {SUBJECT_NAME} Grant Eligibility Requirements
             </h2>
-            <DiamondDivider className="mb-10" />
+            <DiamondDivider className="mb-10" align="left" />
           </FadeInSection>
 
           <div className="space-y-6">
@@ -90,11 +90,11 @@ export default function Eligibility() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
               {SUBJECT_NAME} Grant Summary
             </h2>
-            <DiamondDivider className="mb-10" />
+            <DiamondDivider className="mb-10" align="left" />
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-lg shadow-sm border border-navy/10 overflow-hidden">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-navy text-white">
@@ -134,7 +134,7 @@ export default function Eligibility() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
               {SUBJECT_NAME} Grant 2026 Timeline
             </h2>
-            <DiamondDivider className="mb-10" />
+            <DiamondDivider className="mb-10" align="left" />
           </FadeInSection>
 
           <div className="space-y-6 max-w-2xl mx-auto">
@@ -167,7 +167,7 @@ export default function Eligibility() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
               How the {SUBJECT_NAME} Grant Recipient Is Selected
             </h2>
-            <DiamondDivider className="mb-8" />
+            <DiamondDivider className="mb-8" align="left" />
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
@@ -196,7 +196,7 @@ export default function Eligibility() {
             </p>
             <Link
               to="/apply"
-              className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-10 py-3.5 text-sm font-semibold transition-colors duration-300"
+              className="btn-secondary"
             >
               Apply Now
             </Link>

@@ -103,7 +103,7 @@ export default function BlogArticle() {
             <div className="mt-12 pt-8 border-t border-navy/10 text-center">
               <Link
                 to="/blog"
-                className="inline-block border border-navy/20 text-navy hover:border-gold hover:text-gold font-accent uppercase tracking-wider px-6 py-2.5 text-sm transition-colors"
+                className="btn-outline-dark !border-navy/20 !text-navy hover:!border-gold hover:!text-gold"
               >
                 Back to Blog
               </Link>

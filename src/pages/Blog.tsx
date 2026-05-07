@@ -101,7 +101,7 @@ export default function Blog() {
               <button
                 onClick={() => setPage((p) => Math.max(1, p - 1))}
                 disabled={page === 1}
-                className="px-4 py-2 font-accent uppercase tracking-wider text-xs border border-navy/20 text-navy disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
+                className="btn-outline-dark !px-4 !py-2 !text-xs !border-navy/20 !text-navy disabled:opacity-30 disabled:pointer-events-none hover:!border-gold hover:!text-gold"
               >
                 Previous
               </button>
@@ -111,7 +111,7 @@ export default function Blog() {
               <button
                 onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
                 disabled={page === totalPages}
-                className="px-4 py-2 font-accent uppercase tracking-wider text-xs border border-navy/20 text-navy disabled:opacity-30 hover:border-gold hover:text-gold transition-colors"
+                className="btn-outline-dark !px-4 !py-2 !text-xs !border-navy/20 !text-navy disabled:opacity-30 disabled:pointer-events-none hover:!border-gold hover:!text-gold"
               >
                 Next
               </button>

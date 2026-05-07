@@ -50,13 +50,13 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/apply"
-                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-wider px-8 py-3 text-sm font-semibold transition-colors duration-300"
+                className="btn-primary"
               >
                 Apply for the Grant
               </Link>
               <Link
                 to="/eligibility"
-                className="border border-white/40 hover:border-gold text-white hover:text-gold font-accent uppercase tracking-wider px-8 py-3 text-sm transition-colors duration-300"
+                className="btn-outline"
               >
                 View Eligibility
               </Link>
@@ -86,7 +86,7 @@ export default function Home() {
 
           <FadeInSection delay={0.3}>
             <div className="overflow-x-auto">
-              <table className="w-full max-w-2xl mx-auto border-collapse">
+              <div className="max-w-2xl mx-auto rounded-lg shadow-sm border border-navy/10 overflow-hidden"><table className="w-full border-collapse">
                 <tbody>
                   {[
                     ['Grant Amount', GRANT_AMOUNT],
@@ -103,7 +103,7 @@ export default function Home() {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </table></div>
             </div>
           </FadeInSection>
         </div>
@@ -137,7 +137,7 @@ export default function Home() {
               </p>
               <Link
                 to="/about"
-                className="inline-block border border-gold text-gold hover:bg-gold hover:text-navy font-accent uppercase tracking-wider px-6 py-2.5 text-sm transition-colors duration-300"
+                className="btn-outline-dark"
               >
                 Read Full Story
               </Link>
@@ -225,7 +225,7 @@ export default function Home() {
               </p>
               <Link
                 to="/eligibility"
-                className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-6 py-2.5 text-sm transition-colors duration-300"
+                className="btn-secondary"
               >
                 View Full Eligibility
               </Link>
@@ -254,7 +254,7 @@ export default function Home() {
             </p>
             <Link
               to="/apply"
-              className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-10 py-3.5 text-sm font-semibold transition-colors duration-300"
+              className="btn-secondary"
             >
               Apply Now
             </Link>

@@ -24,7 +24,7 @@ export default function Contact() {
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-2.5 border ${errors[field] ? 'border-red-500' : 'border-navy/20'} rounded focus:outline-none focus:border-gold bg-white text-navy text-sm`;
+    `w-full px-4 py-2.5 border ${errors[field] ? 'border-red-500' : 'border-navy/20'} rounded focus:outline-none focus:border-gold bg-white text-navy text-sm transition-colors duration-200`;
 
   return (
     <>
@@ -62,7 +62,7 @@ export default function Contact() {
               <h2 className="font-display text-3xl font-bold text-navy mb-6">
                 {SUBJECT_NAME} Grant Contact Details
               </h2>
-              <DiamondDivider className="mb-6 !justify-start" />
+              <DiamondDivider className="mb-6" align="left" />
 
               <div className="space-y-6">
                 <div>
@@ -131,7 +131,7 @@ export default function Contact() {
                   </div>
                   <button
                     type="submit"
-                    className="mt-6 w-full bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-wider py-3 text-sm font-semibold transition-colors duration-300"
+                    className="btn-primary w-full mt-6"
                   >
                     Send Message
                   </button>

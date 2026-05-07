@@ -37,7 +37,7 @@ export default function Apply() {
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-2.5 border ${errors[field] ? 'border-red-500' : 'border-navy/20'} rounded focus:outline-none focus:border-gold bg-white text-navy text-sm`;
+    `w-full px-4 py-2.5 border ${errors[field] ? 'border-red-500' : 'border-navy/20'} rounded focus:outline-none focus:border-gold bg-white text-navy text-sm transition-colors duration-200`;
 
   if (submitted) {
     return (
@@ -201,7 +201,7 @@ export default function Apply() {
             <div className="mt-8 text-center">
               <button
                 type="submit"
-                className="bg-gold hover:bg-gold-light text-navy font-accent uppercase tracking-wider px-12 py-3.5 text-sm font-semibold transition-colors duration-300"
+                className="btn-primary w-full max-w-xs mx-auto"
               >
                 Submit Application
               </button>

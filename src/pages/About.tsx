@@ -52,7 +52,7 @@ export default function About() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
               The Early Life of {SUBJECT_NAME}
             </h2>
-            <DiamondDivider className="mb-8" />
+            <DiamondDivider className="mb-8" align="left" />
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
@@ -77,7 +77,7 @@ export default function About() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
               {SUBJECT_NAME} Built an Empire From Nothing
             </h2>
-            <DiamondDivider className="mb-8" />
+            <DiamondDivider className="mb-8" align="left" />
           </FadeInSection>
 
           <FadeInSection delay={0.2}>
@@ -93,7 +93,7 @@ export default function About() {
           </FadeInSection>
 
           <FadeInSection delay={0.3}>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-lg shadow-sm border border-navy/10 overflow-hidden">
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-navy text-white">
@@ -169,7 +169,7 @@ export default function About() {
             </p>
             <Link
               to="/apply"
-              className="inline-block bg-navy hover:bg-navy-light text-white font-accent uppercase tracking-wider px-10 py-3.5 text-sm font-semibold transition-colors duration-300"
+              className="btn-secondary"
             >
               Start Your Application
             </Link>
