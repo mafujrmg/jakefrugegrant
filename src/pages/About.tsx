@@ -26,7 +26,7 @@ export default function About() {
                 <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-2xl rounded-[2rem] group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="glass-card p-2 rounded-[2rem] transform transition-transform duration-500 hover:rotate-y-[5deg]">
                   <img
-                    src={IMAGES.jakeWhiteHoodie}
+                    src="/images/jake-fruge-jr-image.jpg"
                     alt={`${SUBJECT_NAME} — entrepreneur, CEO of JFJ Holdings, and founder of the ${SUBJECT_NAME} Grant`}
                     className="relative z-10 w-full mx-auto rounded-[1.5rem] object-cover shadow-2xl mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700 grayscale-[40%]"
                     loading="lazy"
@@ -171,7 +171,7 @@ export default function About() {
                 <div className="absolute -inset-4 bg-gradient-to-tr from-secondary/20 to-primary/20 blur-2xl rounded-[2rem] group-hover:opacity-60 transition-opacity duration-500 opacity-30" />
                 <div className="glass-card p-2 rounded-[2rem] transform transition-transform duration-500 hover:rotate-y-[-5deg]">
                   <img
-                    src={IMAGES.jakeTeamPhoto}
+                    src="/images/jake-fruge-jr-picture.jpg"
                     alt={`${SUBJECT_NAME} with his team — demonstrating the leadership and mentorship that inspired the ${SUBJECT_NAME} Grant`}
                     className="relative z-10 w-full rounded-[1.5rem] object-cover mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700 grayscale-[40%]"
                     loading="lazy"
