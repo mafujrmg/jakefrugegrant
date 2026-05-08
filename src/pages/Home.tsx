@@ -127,7 +127,7 @@ export default function Home() {
                 <div className="absolute -inset-4 bg-gradient-primary opacity-20 blur-2xl rounded-[2rem] group-hover:opacity-30 transition-opacity duration-500" />
                 <div className="glass-card p-2 rounded-[2rem] transform transition-transform duration-500 hover:rotate-y-[-5deg]">
                   <img
-                    src={IMAGES.jakeForbesSuit}
+                    src="/images/jake-fruge-jr.jpeg"
                     alt={`${SUBJECT_NAME} in a professional suit`}
                     className="relative z-10 w-full rounded-[1.5rem] object-cover mix-blend-luminosity group-hover:mix-blend-normal transition-all duration-700 grayscale-[50%]"
                     loading="lazy"
