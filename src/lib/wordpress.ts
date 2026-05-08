@@ -1,6 +1,3 @@
-import { WP_API_BASE } from './siteConfig';
-import { FALLBACK_POSTS } from './fallbackPosts';
-
 export interface WPPost {
   id: number;
   slug: string;
@@ -10,89 +7,85 @@ export interface WPPost {
   date: string;
   featuredImage: string;
   author: string;
+  link: string;
 }
 
-interface WPRawPost {
+export interface WPRawPost {
   id: number;
   slug: string;
   title: { rendered: string };
   excerpt: { rendered: string };
   content: { rendered: string };
   date: string;
+  link: string;
   _embedded?: {
     'wp:featuredmedia'?: Array<{ source_url: string }>;
     author?: Array<{ name: string }>;
   };
 }
 
-function mapWPPost(raw: WPRawPost): WPPost {
+export function mapWPPost(raw: WPRawPost): WPPost {
   const authorName = raw._embedded?.author?.[0]?.name || '';
   return {
     id: raw.id,
     slug: raw.slug,
     title: raw.title.rendered,
-    excerpt: raw.excerpt.rendered,
+    excerpt: raw.excerpt.rendered.replace(/<[^>]*>?/gm, '').trim(),
     content: raw.content.rendered,
     date: raw.date,
-    featuredImage: raw._embedded?.['wp:featuredmedia']?.[0]?.source_url || '',
+    link: raw.link,
+    featuredImage: raw._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/images/blog-hero.webp',
     author: authorName.toLowerCase() === 'rmg' ? 'Jake Fruge Jr Grant' : authorName || 'Jake Fruge Jr Grant',
   };
 }
 
-function paginatePosts(posts: WPPost[], page: number, perPage: number) {
-  const start = (page - 1) * perPage;
-  return {
-    posts: posts.slice(start, start + perPage),
-    totalPages: Math.ceil(posts.length / perPage),
-  };
-}
-
-export async function fetchPosts(page = 1, perPage = 10, search = '') {
+export async function fetchPosts(page = 1, perPage = 12, search = '') {
   try {
     const params = new URLSearchParams({
       page: String(page),
       per_page: String(perPage),
-      _embed: '',
+      _embed: 'true',
+      orderby: 'date',
+      order: 'desc'
     });
     if (search) params.set('search', search);
 
-    const res = await fetch(`${WP_API_BASE}/posts?${params}`);
+    const res = await fetch(`/.netlify/functions/posts?${params}`);
+    
     const contentType = res.headers.get('Content-Type') || '';
     if (!contentType.includes('application/json')) {
-      throw new Error('WP API returned non-JSON response (possible CAPTCHA)');
+      throw new Error('WP API proxy returned non-JSON response');
     }
+    
     if (!res.ok) throw new Error(`WP API error: ${res.status}`);
 
     const data: WPRawPost[] = await res.json();
     const totalPages = parseInt(res.headers.get('X-WP-TotalPages') || '1', 10);
-    return { posts: data.map(mapWPPost), totalPages };
+    const total = parseInt(res.headers.get('X-WP-Total') || '0', 10);
+    
+    return { posts: data.map(mapWPPost), totalPages, total };
   } catch (err) {
-    console.warn('WordPress API unavailable, using fallback posts:', err);
-    const filtered = search
-      ? FALLBACK_POSTS.filter(
-          (p) =>
-            p.title.toLowerCase().includes(search.toLowerCase()) ||
-            p.content.toLowerCase().includes(search.toLowerCase())
-        )
-      : FALLBACK_POSTS;
-    return paginatePosts(filtered, page, perPage);
+    console.error('Failed to fetch WordPress posts:', err);
+    return { posts: [], totalPages: 1, total: 0 };
   }
 }
 
 export async function fetchPostBySlug(slug: string): Promise<WPPost | null> {
   try {
-    const params = new URLSearchParams({ slug, _embed: '' });
-    const res = await fetch(`${WP_API_BASE}/posts?${params}`);
+    const params = new URLSearchParams({ slug, _embed: 'true' });
+    const res = await fetch(`/.netlify/functions/posts?${params}`);
+    
     const contentType = res.headers.get('Content-Type') || '';
     if (!contentType.includes('application/json')) {
-      throw new Error('WP API returned non-JSON response (possible CAPTCHA)');
+      throw new Error('WP API proxy returned non-JSON response');
     }
+    
     if (!res.ok) throw new Error(`WP API error: ${res.status}`);
 
     const data: WPRawPost[] = await res.json();
     return data.length > 0 ? mapWPPost(data[0]) : null;
   } catch (err) {
-    console.warn('WordPress API unavailable, using fallback posts:', err);
-    return FALLBACK_POSTS.find((p) => p.slug === slug) || null;
+    console.error(`Failed to fetch WordPress post with slug ${slug}:`, err);
+    return null;
   }
 }

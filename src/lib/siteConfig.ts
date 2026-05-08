@@ -10,10 +10,6 @@ export const GRANT_AMOUNT = '$1,000';
 export const GRANT_DEADLINE = 'August 15, 2026';
 export const GRANT_WINNER_DATE = 'August 30, 2026';
 
-export const WP_API_BASE = import.meta.env.DEV
-  ? '/api/wp'
-  : '/blog/wp-json/wp/v2';
-
 export const SOCIAL_LINKS = {
   instagram: 'https://www.instagram.com/jakefrugejr',
   facebook: 'https://www.facebook.com/jakefrugejr',

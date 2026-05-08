@@ -3,6 +3,24 @@
   publish = "dist"
 
 [[redirects]]
+  from = "/blog/wp-content/*"
+  to = "http://blog.jakefrugejrgrant.com/wp-content/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/wp-admin/*"
+  to = "http://blog.jakefrugejrgrant.com/wp-admin/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/wp-login.php"
+  to = "http://blog.jakefrugejrgrant.com/wp-login.php"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

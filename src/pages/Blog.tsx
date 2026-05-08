@@ -4,6 +4,7 @@ import SEO from '@/components/SEO';
 import FadeInSection from '@/components/FadeInSection';
 import DiamondDivider from '@/components/DiamondDivider';
 import { fetchPosts, type WPPost } from '@/lib/wordpress';
+import { FALLBACK_POSTS } from '@/lib/fallbackPosts';
 import { SUBJECT_NAME, IMAGES } from '@/lib/siteConfig';
 
 export default function Blog() {
@@ -15,8 +16,24 @@ export default function Blog() {
   useEffect(() => {
     setLoading(true);
     fetchPosts(page, 6).then(({ posts: p, totalPages: tp }) => {
-      setPosts(p);
-      setTotalPages(tp);
+      const allPostsMap = new Map<string, WPPost>();
+
+      // Static posts appear first
+      if (page === 1) {
+        FALLBACK_POSTS.forEach(post => allPostsMap.set(post.slug, post));
+      }
+
+      // WordPress posts append after them, deduplicated by slug
+      p.forEach(post => {
+        if (!allPostsMap.has(post.slug)) {
+          allPostsMap.set(post.slug, post);
+        }
+      });
+
+      const mergedPosts = Array.from(allPostsMap.values());
+
+      setPosts(mergedPosts);
+      setTotalPages(tp > 0 ? tp : 1);
       setLoading(false);
     });
   }, [page]);

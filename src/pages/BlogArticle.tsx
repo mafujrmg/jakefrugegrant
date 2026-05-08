@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import FadeInSection from '@/components/FadeInSection';
 import { fetchPostBySlug, type WPPost } from '@/lib/wordpress';
+import { FALLBACK_POSTS } from '@/lib/fallbackPosts';
 import { SUBJECT_NAME, SITE_DOMAIN } from '@/lib/siteConfig';
 
 export default function BlogArticle() {
@@ -14,7 +15,12 @@ export default function BlogArticle() {
     if (!slug) return;
     setLoading(true);
     fetchPostBySlug(slug).then((p) => {
-      setPost(p);
+      if (p) {
+        setPost(p);
+      } else {
+        const fallback = FALLBACK_POSTS.find(post => post.slug === slug);
+        setPost(fallback || null);
+      }
       setLoading(false);
     });
   }, [slug]);

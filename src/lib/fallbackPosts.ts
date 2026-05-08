@@ -33,6 +33,7 @@ export const FALLBACK_POSTS: WPPost[] = [
     date: '2026-03-15T10:00:00',
     featuredImage: '/images/blog-entrepreneurship.webp',
     author: 'Jake Fruge Jr Grant',
+    link: '/blog/why-entrepreneurial-thinking-matters-in-college',
   },
   {
     id: 2,
@@ -64,5 +65,6 @@ export const FALLBACK_POSTS: WPPost[] = [
     date: '2026-02-20T10:00:00',
     featuredImage: '/images/blog-resilience.webp',
     author: 'Jake Fruge Jr Grant',
+    link: '/blog/turning-adversity-into-fuel-lessons-from-unlikely-paths',
   },
 ];
