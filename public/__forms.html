@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Netlify Forms</title>
+</head>
+<body>
+  <!-- Application Form -->
+  <form name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="application" />
+    <input name="bot-field" />
+    <input name="firstName" />
+    <input name="lastName" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="dob" />
+    <input name="street" />
+    <input name="city" />
+    <input name="state" />
+    <input name="zip" />
+    <input name="university" />
+    <input name="programLevel" />
+    <input name="major" />
+    <input name="gradDate" />
+    <textarea name="statement"></textarea>
+  </form>
+
+  <!-- Contact Form -->
+  <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input type="hidden" name="form-name" value="contact" />
+    <input name="bot-field" />
+    <input name="name" />
+    <input name="email" />
+    <input name="subject" />
+    <textarea name="message"></textarea>
+  </form>
+</body>
+</html>

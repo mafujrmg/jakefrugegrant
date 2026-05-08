@@ -10,7 +10,7 @@ export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const errs: Record<string, string> = {};
@@ -20,7 +20,18 @@ export default function Contact() {
     const email = form.get('email')?.toString() || '';
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errs.email = 'Enter a valid email';
     setErrors(errs);
-    if (Object.keys(errs).length === 0) setSubmitted(true);
+    if (Object.keys(errs).length === 0) {
+      try {
+        await fetch('/__forms.html', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(form as any).toString(),
+        });
+        setSubmitted(true);
+      } catch (error) {
+        console.error('Form submission failed:', error);
+      }
+    }
   };
 
   const inputClass = (field: string) =>
@@ -105,7 +116,13 @@ export default function Contact() {
                   <p className="text-navy/70">Thank you for reaching out. The {SUBJECT_NAME} Grant team will respond within 2–3 business days.</p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} noValidate className="bg-white p-8 rounded-lg shadow-md">
+                <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} noValidate className="bg-white p-8 rounded-lg shadow-md">
+                  <input type="hidden" name="form-name" value="contact" />
+                  <p style={{ display: 'none' }}>
+                    <label>
+                      Don't fill this out: <input name="bot-field" />
+                    </label>
+                  </p>
                   <h3 className="font-display text-2xl font-bold text-navy mb-6">Send Us a Message</h3>
                   <div className="space-y-4">
                     <div>

@@ -28,12 +28,23 @@ export default function Apply() {
     return errs;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const errs = validate(form);
     setErrors(errs);
-    if (Object.keys(errs).length === 0) setSubmitted(true);
+    if (Object.keys(errs).length === 0) {
+      try {
+        await fetch('/__forms.html', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(form as any).toString(),
+        });
+        setSubmitted(true);
+      } catch (error) {
+        console.error('Form submission failed:', error);
+      }
+    }
   };
 
   const inputClass = (field: string) =>
@@ -93,7 +104,13 @@ export default function Apply() {
       {/* Form */}
       <section className="py-16 md:py-24 bg-cream">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <form onSubmit={handleSubmit} noValidate>
+          <form name="application" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={handleSubmit} noValidate>
+            <input type="hidden" name="form-name" value="application" />
+            <p style={{ display: 'none' }}>
+              <label>
+                Don't fill this out: <input name="bot-field" />
+              </label>
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* First Name */}
               <div>
