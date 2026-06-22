@@ -31,14 +31,40 @@ export default function Apply() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = new FormData(e.currentTarget);
+    const formElement = e.currentTarget;
+    const form = new FormData(formElement);
     const errs = validate(form);
     setErrors(errs);
-    if (Object.keys(errs).length === 0) setSubmitted(true);
+    
+    if (Object.keys(errs).length === 0) {
+      const bodyData = new URLSearchParams();
+      form.forEach((value, key) => {
+        bodyData.append(key, value.toString());
+      });
+      if (!bodyData.has('form-name')) {
+        bodyData.append('form-name', 'apply');
+      }
+
+      fetch('/__forms.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: bodyData.toString(),
+      })
+        .then((res) => {
+          if (res.ok) {
+            setSubmitted(true);
+          } else {
+            console.error('Form submission failed');
+          }
+        })
+        .catch((err) => {
+          console.error('Form submission error:', err);
+        });
+    }
   };
 
   const inputClass = (field: string) =>
-    `w-full px-4 py-3 border border-white/10 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface text-text-main text-sm md:text-base transition-all duration-200 placeholder:text-text-muted/50 ${errors[field] ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`;
+    `w-full px-4 py-3 border border-white/10 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary bg-surface text-white text-sm md:text-base transition-all duration-200 placeholder:text-text-muted/50 ${errors[field] ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''}`;
 
   if (submitted) {
     return (
@@ -101,7 +127,21 @@ export default function Apply() {
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] pointer-events-none" />
         
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <form onSubmit={handleSubmit} noValidate className="glass-card p-8 md:p-14 rounded-3xl shadow-2xl border border-white/10">
+          <form
+            name="apply"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field"
+            onSubmit={handleSubmit}
+            noValidate
+            className="glass-card p-8 md:p-14 rounded-3xl shadow-2xl border border-white/10"
+          >
+            <input type="hidden" name="form-name" value="apply" />
+            <p style={{ display: 'none' }}>
+              <label>
+                Don't fill this out: <input name="bot-field" />
+              </label>
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* First Name */}
               <div>

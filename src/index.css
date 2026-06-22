@@ -162,3 +162,8 @@ a[class*="grid"],
     padding-right: 2.5rem;
   }
 }
+
+/* Ensure form field text is visible while typing */
+.md\:text-base {
+  color: #e3dbdb;
+}
