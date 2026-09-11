@@ -272,6 +272,39 @@ export default function Home() {
         </div>
       </section>
 
+      {/* 2026 GRANT RECIPIENT */}
+      <section className="jfg-winner-section">
+        <div className="jfg-winner-container">
+          <div className="jfg-winner-badge">
+            <span className="jfg-badge-dot"></span>
+            <span className="jfg-badge-text">2026 Grant Recipient</span>
+          </div>
+
+          <h2 className="jfg-winner-heading">Donna-Lee Dawes</h2>
+          <p className="jfg-winner-subheading">Morgan State University — Marine Science &amp; Conservation</p>
+
+          <div className="jfg-winner-award">
+            <span className="jfg-award-amount">$1,000</span>
+            <span className="jfg-award-label">Jake Fruge Jr. Grant</span>
+          </div>
+
+          <div className="jfg-letter-card">
+            <span className="jfg-letter-label">Gratitude Statement</span>
+
+            <p className="jfg-letter-paragraph">Thank you so much for selecting me as a recipient of this scholarship. Your generosity means more to me than I can fully express. Coming from six years of homelessness and financial uncertainty, receiving this support is a reminder that the difficult circumstances I experienced do not have to determine my future.</p>
+
+            <p className="jfg-letter-paragraph">This scholarship will allow me to focus more on my education at Morgan State University and continue pursuing my passion for marine science, technology, and conservation. I hope to use my education to make a meaningful impact through marine research and eventually create opportunities for other students, especially young Black and first-generation students pursuing STEM.</p>
+
+            <p className="jfg-letter-paragraph">Thank you for believing in my potential and investing in my future. Your support is helping me take another step toward the life I have worked so hard to build. I am truly grateful for this opportunity and will carry your generosity with me as I continue toward my goals.</p>
+
+            <div className="jfg-letter-signoff">
+              <span className="jfg-signoff-line">With sincere gratitude,</span>
+              <span className="jfg-signoff-name">Donna-Lee Dawes</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA BANNER */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-primary opacity-90 mix-blend-multiply" />

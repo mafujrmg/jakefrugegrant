@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 @theme {
   --color-base: #050505;
@@ -162,3 +163,144 @@ a[class*="grid"],
     padding-right: 2.5rem;
   }
 }
+
+/* =========================================================
+   2026 Grant Recipient Section Styles
+   ========================================================= */
+
+.jfg-winner-section {
+  font-family: 'Inter', Arial, sans-serif;
+  background: linear-gradient(135deg, #0d3a54 0%, #1667a1 55%, #41A6E2 100%);
+  padding: 92px 24px;
+  box-sizing: border-box;
+}
+
+.jfg-winner-section * {
+  box-sizing: border-box;
+}
+
+.jfg-winner-container {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.jfg-winner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.jfg-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.jfg-winner-heading {
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.jfg-winner-subheading {
+  font-size: 15px;
+  color: #d6ecfb;
+  font-weight: 500;
+  margin: 0 0 30px;
+}
+
+.jfg-winner-award {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 10px 24px;
+  margin-bottom: 48px;
+}
+
+.jfg-award-amount {
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.jfg-award-label {
+  font-size: 13px;
+  color: #d6ecfb;
+}
+
+.jfg-letter-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 20px;
+  padding: 52px 48px;
+  text-align: left;
+  box-shadow: 0 20px 50px rgba(13, 58, 84, 0.35);
+}
+
+.jfg-letter-label {
+  display: block;
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #41A6E2;
+  margin-bottom: 26px;
+}
+
+.jfg-letter-paragraph {
+  font-size: 15.5px;
+  line-height: 1.85;
+  color: #2c3a45;
+  margin: 0 0 20px;
+}
+
+.jfg-letter-signoff {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #e2eef6;
+  padding-top: 20px;
+}
+
+.jfg-signoff-line {
+  font-size: 14px;
+  color: #5c6b76;
+  margin-bottom: 6px;
+}
+
+.jfg-signoff-name {
+  font-family: 'Outfit', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1667a1;
+}
+
+@media (max-width: 700px) {
+  .jfg-winner-heading {
+    font-size: 32px;
+  }
+
+  .jfg-letter-card {
+    padding: 40px 28px;
+  }
+}
+
