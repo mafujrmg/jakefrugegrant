@@ -1,39 +1,12 @@
-import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 import FadeInSection from '@/components/FadeInSection';
-import { fetchPostBySlug, type WPPost } from '@/lib/wordpress';
-import { FALLBACK_POSTS } from '@/lib/fallbackPosts';
+import { getPostBySlug, formatPostDate } from '@/lib/posts';
 import { SUBJECT_NAME, SITE_DOMAIN } from '@/lib/siteConfig';
 
 export default function BlogArticle() {
   const { slug } = useParams<{ slug: string }>();
-  const [post, setPost] = useState<WPPost | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!slug) return;
-    setLoading(true);
-    fetchPostBySlug(slug).then((p) => {
-      if (p) {
-        setPost(p);
-      } else {
-        const fallback = FALLBACK_POSTS.find(post => post.slug === slug);
-        setPost(fallback || null);
-      }
-      setLoading(false);
-    });
-  }, [slug]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-base relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--color-primary)_0%,_transparent_40%)] opacity-10 pointer-events-none" />
-        <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin shadow-[0_0_20px_rgba(139,92,246,0.3)] relative z-10" />
-        <p className="mt-8 font-accent uppercase tracking-widest text-xs text-text-muted relative z-10">Loading article...</p>
-      </div>
-    );
-  }
+  const post = slug ? getPostBySlug(slug) : null;
 
   if (!post) {
     return (
@@ -50,27 +23,27 @@ export default function BlogArticle() {
     );
   }
 
-  const stripHtml = (html: string) => html.replace(/<[^>]*>/g, '').trim();
-
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
-    description: stripHtml(post.excerpt).slice(0, 160),
-    image: post.featuredImage ? `${SITE_DOMAIN}${post.featuredImage}` : undefined,
-    datePublished: post.date,
+    description: post.metaDescription,
+    image: post.image ? `${SITE_DOMAIN}${post.image}` : undefined,
+    datePublished: post.datePublished,
+    dateModified: post.datePublished,
     author: { '@type': 'Organization', name: `${SUBJECT_NAME} Grant` },
     publisher: { '@type': 'Organization', name: `${SUBJECT_NAME} Grant`, url: SITE_DOMAIN },
+    mainEntityOfPage: `${SITE_DOMAIN}/blog/${post.slug}`,
   };
 
   return (
     <>
       <SEO
-        title={`${post.title} | ${SUBJECT_NAME} Grant Blog`}
-        description={stripHtml(post.excerpt).slice(0, 160)}
+        title={post.seoTitle}
+        description={post.metaDescription}
         canonical={`/blog/${post.slug}`}
         ogType="article"
-        ogImage={post.featuredImage}
+        ogImage={post.image}
         schemas={[articleSchema]}
       />
 
@@ -85,39 +58,42 @@ export default function BlogArticle() {
               <div className="flex items-center justify-center gap-4 mb-8">
                 <span className="w-16 h-[1px] bg-gradient-to-r from-transparent to-primary" />
                 <p className="font-accent uppercase tracking-widest text-primary-light text-xs font-bold">
-                  {new Date(post.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {formatPostDate(post.date)}
                 </p>
                 <span className="w-16 h-[1px] bg-gradient-to-l from-transparent to-primary" />
               </div>
               <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-text-main leading-tight mb-8 tracking-tight">
                 {post.title}
               </h1>
-              {post.author && (
-                <p className="font-accent uppercase tracking-widest text-text-muted text-xs flex items-center justify-center gap-3">
-                  <span className="w-6 h-px bg-white/20"></span>
-                  Written by {post.author}
-                  <span className="w-6 h-px bg-white/20"></span>
-                </p>
-              )}
+              <p className="font-accent uppercase tracking-widest text-text-muted text-xs flex items-center justify-center gap-3">
+                <span className="w-6 h-px bg-white/20"></span>
+                Written by {SUBJECT_NAME}
+                <span className="w-6 h-px bg-white/20"></span>
+              </p>
             </FadeInSection>
           </div>
         </section>
 
         {/* Featured Image */}
-        {post.featuredImage && (
+        {post.image && (
           <div className="max-w-5xl mx-auto px-6 -mt-20 md:-mt-32 relative z-20 mb-20 md:mb-32">
             <FadeInSection delay={0.2}>
-              <div className="glass-card p-3 rounded-[2.5rem] shadow-2xl border border-white/10 group">
+              <figure className="glass-card p-3 rounded-[2.5rem] shadow-2xl border border-white/10 group">
                 <div className="overflow-hidden rounded-[2rem] relative bg-surface">
                   <div className="absolute inset-0 bg-base/10 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                   <img
-                    src={post.featuredImage}
-                    alt={post.title}
+                    src={post.image}
+                    alt={post.imageAlt || post.title}
                     className="w-full object-cover aspect-[21/9] group-hover:scale-105 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
                     loading="lazy"
                   />
                 </div>
-              </div>
+                {post.imageCaption && (
+                  <figcaption className="px-6 pt-5 pb-2 text-center font-accent uppercase tracking-widest text-[10px] text-text-muted">
+                    {post.imageCaption}
+                  </figcaption>
+                )}
+              </figure>
             </FadeInSection>
           </div>
         )}

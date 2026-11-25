@@ -21,12 +21,23 @@
   force = true
 
 [[redirects]]
+  from = "https://blog.jakefrugejrgrant.com/:slug"
+  to = "https://jakefrugejrgrant.com/blog/:slug"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
 
 [[headers]]
   for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/posts/images/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
