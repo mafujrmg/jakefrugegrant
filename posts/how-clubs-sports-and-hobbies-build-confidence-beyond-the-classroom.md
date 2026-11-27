@@ -1,7 +1,7 @@
 ---
 title: "How Clubs, Sports, and Hobbies Build Confidence Beyond the Classroom"
 slug: "how-clubs-sports-and-hobbies-build-confidence-beyond-the-classroom"
-date: "2026-12-05"
+date: "2026-12-07"
 time: "9:00:00"
 category:
   - "Fun"
