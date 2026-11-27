@@ -141,6 +141,41 @@ function plainTextFromMarkdown(markdown) {
     .trim();
 }
 
+function looksLikeHtml(body) {
+  const trimmed = String(body).trim();
+  if (!trimmed) return false;
+  if (!/<[a-z][\s\S]*>/i.test(trimmed)) return false;
+  return /<\/?(p|div|h[1-6]|ul|ol|li|table|thead|tbody|tr|td|th|blockquote|figure|figcaption|section|article|hr|br|strong|em|a)\b/i.test(
+    trimmed,
+  );
+}
+
+function decodeHtmlEntities(value) {
+  return String(value)
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&amp;/gi, '&')
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&quot;/gi, '"')
+    .replace(/&#0*39;/g, "'")
+    .replace(/&apos;/gi, "'")
+    .replace(/&rsquo;|&lsquo;/gi, "'")
+    .replace(/&ldquo;|&rdquo;/gi, '"')
+    .replace(/&mdash;/gi, '-')
+    .replace(/&ndash;/gi, '-');
+}
+
+function plainTextFromHtml(value) {
+  return decodeHtmlEntities(
+    String(value)
+      .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+      .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+      .replace(/<[^>]+>/g, ' '),
+  )
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function resolveImage(data, title, images) {
   const declared = pick(data, ['image', 'featured_image', 'featuredImage', 'image_path']).trim();
   if (declared) {
@@ -219,12 +254,14 @@ function updateSitemap(visiblePosts) {
   fs.writeFileSync(sitemapPath, xml, 'utf8');
 }
 
-function toRecord(candidate, index) {
-  const { loaded, image } = candidate;
+function toRecord(candidate, image, index) {
+  const { loaded } = candidate;
   const data = loaded.data;
   const metaDescription = pick(data, ['meta_description', 'metaDescription', 'seo_description']);
   const body = loaded.body;
-  const excerpt = metaDescription || plainTextFromMarkdown(body).slice(0, 200);
+  const isHtml = looksLikeHtml(body);
+  const plainText = isHtml ? plainTextFromHtml(body) : plainTextFromMarkdown(body);
+  const excerpt = metaDescription || plainText.slice(0, 200);
   return {
     id: index + 1,
     slug: loaded.slug,
@@ -246,7 +283,7 @@ function toRecord(candidate, index) {
     imageDescription: pick(data, ['image_description', 'image_desc']),
     originalPostLink: pick(data, ['original_post_link', 'original_link', 'source_url', 'post_link']),
     excerpt,
-    content: markdownToHtml(body),
+    content: isHtml ? body.trim() : markdownToHtml(body),
   };
 }
 
@@ -270,11 +307,7 @@ for (const filePath of readPostFiles()) {
       warnings.push(`${filename}: empty content -> skipped`);
       continue;
     }
-    const image = resolveImage(loaded.data, loaded.title, images);
-    if (image.warning) {
-      warnings.push(`${filename}: ${image.warning} -> showing post without image`);
-    }
-    candidates.push({ loaded, image });
+    candidates.push({ loaded });
   } catch (error) {
     warnings.push(`${filename}: could not be read (${error.message}) -> skipped`);
   }
@@ -297,7 +330,13 @@ const visible = unique.filter((candidate) => candidate.loaded.publish.moment.get
 const hidden = unique.filter((candidate) => candidate.loaded.publish.moment.getTime() > now.getTime());
 visible.sort((a, b) => b.loaded.publish.moment.getTime() - a.loaded.publish.moment.getTime());
 
-const visibleRecords = visible.map((candidate, index) => toRecord(candidate, index));
+const visibleRecords = visible.map((candidate, index) => {
+  const image = resolveImage(candidate.loaded.data, candidate.loaded.title, images);
+  if (image.warning) {
+    warnings.push(`${candidate.loaded.filename}: ${image.warning} -> showing post without image`);
+  }
+  return toRecord(candidate, image, index);
+});
 
 const generatedDir = path.join(ROOT, 'src', 'generated');
 fs.mkdirSync(generatedDir, { recursive: true });

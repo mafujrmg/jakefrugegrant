@@ -76,10 +76,30 @@ export function parseFrontmatter(raw) {
   const block = text.slice(4, end);
   const body = text.slice(end + 5);
   const data = {};
-  for (const line of block.split('\n')) {
+  const lines = block.split('\n');
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!line.trim() || line.trim().startsWith('#')) continue;
     const match = /^([A-Za-z0-9_-]+)\s*:\s*(.*)$/.exec(line);
     if (!match) continue;
-    data[match[1]] = parseScalar(match[2]);
+    const key = match[1];
+    const rest = match[2];
+    if (rest.trim() === '') {
+      const items = [];
+      let cursor = index + 1;
+      while (cursor < lines.length) {
+        const listMatch = /^\s*-\s+(.*)$/.exec(lines[cursor]);
+        if (!listMatch) break;
+        items.push(asString(parseScalar(listMatch[1])).trim());
+        cursor += 1;
+      }
+      if (items.length > 0) {
+        data[key] = items.filter(Boolean);
+        index = cursor - 1;
+        continue;
+      }
+    }
+    data[key] = parseScalar(rest);
   }
   return { data, body };
 }
