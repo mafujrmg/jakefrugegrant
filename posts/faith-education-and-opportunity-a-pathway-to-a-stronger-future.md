@@ -1,7 +1,7 @@
 ---
 title: "Faith, Education, and Opportunity: A Pathway to a Stronger Future"
 slug: "faith-education-and-opportunity-a-pathway-to-a-stronger-future"
-date: "2026-11-30"
+date: "2026-12-02"
 time: "9:00:00"
 category:
   - "Faith"
