@@ -4,3 +4,5 @@ dist
 *.local
 posts/*.zip
 _restore-tmp/
+src/generated/
+public/build-info.json

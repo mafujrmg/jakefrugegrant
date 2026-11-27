@@ -61,13 +61,14 @@ export default function Blog() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
               {posts.map((post, i) => (
                 <FadeInSection key={post.slug} delay={i * 0.1} className="h-full w-full">
-                  <Link to={`/blog/${post.slug}`} className="group flex flex-col h-full glass-card rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.1)] transition-all duration-500 transform hover:-translate-y-2 no-underline border border-white/10">
+                  <Link to={post.path} className="group flex flex-col h-full glass-card rounded-2xl overflow-hidden hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,92,246,0.1)] transition-all duration-500 transform hover:-translate-y-2 no-underline border border-white/10">
                     {post.image && (
                         <div className="aspect-[16/10] overflow-hidden relative">
                           <div className="absolute inset-0 bg-base/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                           <img
                             src={post.image}
                             alt={post.imageAlt || post.title}
+                            title={post.imageTitle || undefined}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
                             loading="lazy"
                           />

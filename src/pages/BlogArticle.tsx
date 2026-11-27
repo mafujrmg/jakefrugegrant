@@ -23,17 +23,35 @@ export default function BlogArticle() {
     );
   }
 
+  const absoluteImage = post.image
+    ? post.image.startsWith('http')
+      ? post.image
+      : `${SITE_DOMAIN}${post.image}`
+    : '';
+  const keywords = Array.from(new Set([...post.tags, post.focusKeyphrase].filter(Boolean))).join(', ');
+  const imageSchema = absoluteImage
+    ? {
+        '@type': 'ImageObject',
+        url: absoluteImage,
+        ...(post.imageTitle ? { name: post.imageTitle } : {}),
+        ...(post.imageCaption ? { caption: post.imageCaption } : {}),
+        ...(post.imageDescription ? { description: post.imageDescription } : {}),
+      }
+    : undefined;
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
-    description: post.metaDescription,
-    image: post.image ? `${SITE_DOMAIN}${post.image}` : undefined,
-    datePublished: post.datePublished,
-    dateModified: post.datePublished,
+    description: post.metaDescription || undefined,
+    image: imageSchema,
+    datePublished: post.publishMoment,
+    dateModified: post.publishMoment,
+    articleSection: post.category.length ? post.category.join(', ') : undefined,
+    keywords: keywords || undefined,
     author: { '@type': 'Organization', name: `${SUBJECT_NAME} Grant` },
     publisher: { '@type': 'Organization', name: `${SUBJECT_NAME} Grant`, url: SITE_DOMAIN },
-    mainEntityOfPage: `${SITE_DOMAIN}/blog/${post.slug}`,
+    mainEntityOfPage: `${SITE_DOMAIN}${post.path}`,
   };
 
   return (
@@ -41,9 +59,10 @@ export default function BlogArticle() {
       <SEO
         title={post.seoTitle}
         description={post.metaDescription}
-        canonical={`/blog/${post.slug}`}
+        canonical={post.path}
         ogType="article"
         ogImage={post.image}
+        ogImageAlt={post.imageAlt}
         schemas={[articleSchema]}
       />
 
@@ -84,6 +103,7 @@ export default function BlogArticle() {
                   <img
                     src={post.image}
                     alt={post.imageAlt || post.title}
+                    title={post.imageTitle || undefined}
                     className="w-full object-cover aspect-[21/9] group-hover:scale-105 transition-transform duration-700 grayscale-[20%] group-hover:grayscale-0"
                     loading="lazy"
                   />

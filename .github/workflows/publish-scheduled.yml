@@ -1,0 +1,36 @@
+name: Publish scheduled posts
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Print what would happen without triggering the build hook'
+        required: false
+        default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
+
+permissions:
+  contents: read
+
+jobs:
+  check-scheduled-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check scheduled posts
+        env:
+          BUILD_HOOK_URL: ${{ secrets.BUILD_HOOK_URL }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: node scripts/check-scheduled.mjs

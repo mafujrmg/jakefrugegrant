@@ -7,10 +7,11 @@ interface SEOProps {
   canonical: string;
   ogType?: string;
   ogImage?: string;
+  ogImageAlt?: string;
   schemas?: object[];
 }
 
-export default function SEO({ title, description, canonical, ogType = 'website', ogImage, schemas = [] }: SEOProps) {
+export default function SEO({ title, description, canonical, ogType = 'website', ogImage, ogImageAlt, schemas = [] }: SEOProps) {
   const fullCanonical = canonical.startsWith('http') ? canonical : `${SITE_DOMAIN}${canonical}`;
   const fullOgImage = ogImage
     ? ogImage.startsWith('http') ? ogImage : `${SITE_DOMAIN}${ogImage}`
@@ -36,20 +37,22 @@ export default function SEO({ title, description, canonical, ogType = 'website',
   return (
     <Helmet>
       <title>{title}</title>
-      <meta name="description" content={description} />
+      {description && <meta name="description" content={description} />}
       <link rel="canonical" href={fullCanonical} />
 
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      {description && <meta property="og:description" content={description} />}
       <meta property="og:url" content={fullCanonical} />
       <meta property="og:type" content={ogType} />
       <meta property="og:image" content={fullOgImage} />
+      {ogImageAlt && <meta property="og:image:alt" content={ogImageAlt} />}
       <meta property="og:site_name" content="Jake Fruge Jr Grant" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      {description && <meta name="twitter:description" content={description} />}
       <meta name="twitter:image" content={fullOgImage} />
+      {ogImageAlt && <meta name="twitter:image:alt" content={ogImageAlt} />}
 
       {allSchemas.map((schema, i) => (
         <script key={i} type="application/ld+json">
