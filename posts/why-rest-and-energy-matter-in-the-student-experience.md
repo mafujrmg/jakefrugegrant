@@ -1,7 +1,7 @@
 ---
 title: "Why Rest and Energy Matter in the Student Experience"
 slug: "why-rest-and-energy-matter-in-the-student-experience"
-date: "2026-12-10"
+date: "2026-12-12"
 time: "9:00:00"
 category:
   - "Fitness"
