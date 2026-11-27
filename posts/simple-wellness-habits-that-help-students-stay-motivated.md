@@ -1,8 +1,8 @@
 ---
 title: "Simple Wellness Habits That Help Students Stay Motivated"
 slug: "simple-wellness-habits-that-help-students-stay-motivated"
-date: "2026-11-25"
-time: "9:00:00"
+date: "2026-11-27"
+time: "1:00:00"
 category:
   - "Fitness"
   - "Jake Fruge Jr"
